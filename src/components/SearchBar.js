@@ -46,9 +46,9 @@ const SearchBar = ({ isScrolled, onSearchOpenChange }) => {
     // Features & Benefits
     { title: 'Quick Scan', path: '/services', section: 'quickscan', keywords: ['quick scan', 'free', 'instant', 'fast audit', 'basic check'], type: 'section', description: 'Free instant accessibility check' },
     { title: 'Full Audit', path: '/services', section: 'fullaudit', keywords: ['full audit', 'comprehensive', 'detailed report', 'in-depth analysis'], type: 'section', description: 'Comprehensive accessibility audit' },
-    { title: 'SilverSurfers Score', path: '/services', keywords: ['score', 'rating', 'accessibility score', 'metrics'], type: 'feature', description: 'Proprietary accessibility scoring system' },
+    { title: 'Markhor Score', path: '/services', keywords: ['score', 'rating', 'accessibility score', 'metrics'], type: 'feature', description: 'Proprietary accessibility scoring system' },
     { title: 'PDF Reports', path: '/services', keywords: ['pdf', 'download', 'report', 'documentation'], type: 'feature', description: 'Downloadable PDF audit reports' },
-    { title: 'SilverSurfers Seal', path: '/services', keywords: ['seal', 'badge', 'certification', 'compliance badge'], type: 'feature', description: 'Display your accessibility commitment' },
+    { title: 'Markhor Seal', path: '/services', keywords: ['seal', 'badge', 'certification', 'compliance badge'], type: 'feature', description: 'Display your accessibility commitment' },
     { title: 'Email Support', path: '/contact', keywords: ['email support', 'customer service', 'help desk'], type: 'feature', description: 'Get help via email' },
     { title: 'Priority Support', path: '/subscription', keywords: ['priority', 'fast response', 'urgent help'], type: 'feature', description: 'Fast-tracked customer support' },
     

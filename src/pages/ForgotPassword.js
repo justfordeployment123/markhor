@@ -16,7 +16,7 @@ const ForgotPassword = () => {
   };
 
   return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900 pt-24 pb-10 px-4">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#050312] to-[#0a0520] pt-24 pb-10 px-4">
       <form onSubmit={onSubmit} className="bg-white rounded-3xl shadow-xl p-8 w-full max-w-md">
         <h2 className="heading-page font-bold text-gray-900 mb-6 text-center">Forgot Password</h2>
         <div className="mb-4">
@@ -26,7 +26,7 @@ const ForgotPassword = () => {
             value={email}
             onChange={e=>setEmail(e.target.value)}
             placeholder="you@example.com"
-            className="w-full px-4 py-3 rounded-xl border border-gray-400 focus:ring-2 focus:ring-blue-600 text-gray-900 bg-gray-50"
+            className="w-full px-4 py-3 rounded-xl border border-gray-400 focus:ring-2 focus:ring-indigo-500 text-gray-900 bg-gray-50"
             required
           />
         </div>
@@ -35,12 +35,12 @@ const ForgotPassword = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 px-6 bg-gradient-to-r from-blue-700 via-green-700 to-teal-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+          className="w-full py-3 px-6 bg-gradient-to-r from-[#818cf8] to-[#a78bfa] text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
         >
           {loading? 'Sending...' : 'Send Reset Email'}
         </button>
         <p className="text-caption text-gray-700 mt-4 text-center">
-          <a href="/login" className="text-blue-700 underline">Back to login</a>
+          <a href="/login" className="text-indigo-600 underline">Back to login</a>
         </p>
       </form>
     </div>

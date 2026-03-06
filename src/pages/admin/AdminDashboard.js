@@ -206,7 +206,7 @@ const AdminDashboard = () => {
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl shadow-lg p-8 text-white">
         <h1 className="text-4xl font-bold">Admin Dashboard</h1>
-        <p className="mt-2 text-indigo-100">Welcome back! Here's your SilverSurfers administration overview</p>
+        <p className="mt-2 text-indigo-100">Welcome back! Here's your Markhor Systems administration overview</p>
       </div>
 
       {/* Stats Grid */}

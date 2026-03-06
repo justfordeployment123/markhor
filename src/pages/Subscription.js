@@ -238,7 +238,7 @@ const Subscription = () => {
   const getStatusColor = (status) => {
     switch (status) {
       case 'active': return 'text-green-600 bg-green-100';
-      case 'trialing': return 'text-blue-600 bg-blue-100';
+      case 'trialing': return 'text-indigo-600 bg-indigo-100';
       case 'past_due': return 'text-yellow-600 bg-yellow-100';
       case 'canceled': return 'text-red-600 bg-red-100';
       default: return 'text-gray-600 bg-gray-100';
@@ -295,7 +295,7 @@ const Subscription = () => {
 
   // Loading Skeleton Component
   const LoadingSkeleton = () => (
-    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900 pt-24 pb-10 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#050312] to-[#0a0520] pt-24 pb-10 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header Skeleton */}
         <div className="text-center mb-12">
@@ -365,11 +365,11 @@ const Subscription = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900 pt-24 pb-10 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#050312] to-[#0a0520] pt-24 pb-10 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-white mb-4">Subscription Management</h1>
-          <p className="text-xl text-gray-200">Manage your SilverSurfers subscription</p>
+          <p className="text-xl text-gray-200">Manage your Markhor Systems subscription</p>
         </div>
 
         {error && (
@@ -401,7 +401,7 @@ const Subscription = () => {
                   </p>
                   <button
                     onClick={() => navigate('/checkout')}
-                    className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-semibold px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                    className="bg-gradient-to-r from-[#818cf8] to-[#a78bfa] hover:from-[#a78bfa] hover:to-[#c084fc] text-white font-semibold px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                   >
                     Start Full Audit
                   </button>
@@ -448,7 +448,7 @@ const Subscription = () => {
                       <button
                         onClick={handleManageSubscription}
                         disabled={actionLoading}
-                        className="w-full px-4 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 text-white font-semibold rounded-lg transition-colors"
+                        className="w-full px-4 py-2 bg-[#6366f1] hover:bg-[#818cf8] disabled:bg-gray-300 text-white font-semibold rounded-lg transition-colors"
                       >
                         {actionLoading ? 'Opening Portal...' : 'Manage Subscription'}
                       </button>
@@ -505,10 +505,10 @@ const Subscription = () => {
 
             {/* Team Member Info - Only for team members */}
             {currentSubscription.isTeamMember && (
-              <div className="bg-blue-50 rounded-3xl p-8 shadow-xl border border-blue-200">
+              <div className="bg-indigo-50 rounded-3xl p-8 shadow-xl border border-indigo-200">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   </div>
@@ -548,13 +548,13 @@ const Subscription = () => {
                       value={newMemberEmail}
                       onChange={(e) => setNewMemberEmail(e.target.value)}
                       placeholder="Enter email address"
-                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
                       disabled={teamLoading || (currentSubscription.limits.maxUsers !== -1 && teamMembers.length >= currentSubscription.limits.maxUsers)}
                     />
                     <button
                       type="submit"
                       disabled={teamLoading || !newMemberEmail.trim() || (currentSubscription.limits.maxUsers !== -1 && teamMembers.length >= currentSubscription.limits.maxUsers)}
-                      className="px-6 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 text-white font-semibold rounded-lg transition-colors"
+                      className="px-6 py-2 bg-[#6366f1] hover:bg-[#818cf8] disabled:bg-gray-300 text-white font-semibold rounded-lg transition-colors"
                     >
                       {teamLoading ? 'Inviting...' : 'Invite'}
                     </button>
@@ -568,8 +568,8 @@ const Subscription = () => {
                       teamMembers.map((member, index) => (
                         <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                           <div className="flex items-center">
-                            <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                              <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center mr-3">
+                              <svg className="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                               </svg>
                             </div>
@@ -604,7 +604,7 @@ const Subscription = () => {
                 
                 {scansLoading ? (
                   <div className="flex items-center justify-center py-8">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500"></div>
                     <span className="ml-3 text-gray-600">{currentSubscription.limits?.maxUsers > 1 ? 'Loading team scans...' : 'Loading scans...'}</span>
                   </div>
                 ) : teamScans.length === 0 ? (
@@ -632,7 +632,7 @@ const Subscription = () => {
                                 {scan.status.charAt(0).toUpperCase() + scan.status.slice(1)}
                               </span>
                               {scan.isOwner && (
-                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
                                   Owner
                                 </span>
                               )}
@@ -698,7 +698,7 @@ const Subscription = () => {
                     <button
                       onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
                       className={`mx-3 relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                        billingCycle === 'yearly' ? 'bg-blue-600' : 'bg-gray-200'
+                        billingCycle === 'yearly' ? 'bg-[#6366f1]' : 'bg-gray-200'
                       }`}
                     >
                       <span
@@ -724,11 +724,11 @@ const Subscription = () => {
                   const canUpgrade = !isCurrentPlan && plan.id !== 'custom';
                   
                   return (
-                    <div key={plan.id} className={`p-6 border-2 rounded-xl ${isCurrentPlan ? 'border-blue-500 bg-blue-50' : 'border-gray-200'}`}>
+                    <div key={plan.id} className={`p-6 border-2 rounded-xl ${isCurrentPlan ? 'border-indigo-500 bg-indigo-50' : 'border-gray-200'}`}>
                       <div className="flex items-center justify-between mb-3">
                         <h3 className="text-xl font-bold text-gray-900">{plan.name}</h3>
                         {isCurrentPlan && (
-                          <span className="text-xs bg-blue-500 text-white px-2 py-1 rounded-full">Current</span>
+                          <span className="text-xs bg-[#6366f1] text-white px-2 py-1 rounded-full">Current</span>
                         )}
                       </div>
                       
@@ -779,7 +779,7 @@ const Subscription = () => {
                         <button
                           onClick={() => handleUpgradePlan(plan.id, billingCycle)}
                           disabled={actionLoading}
-                          className="w-full px-4 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 text-white font-semibold rounded-lg transition-colors"
+                          className="w-full px-4 py-2 bg-[#6366f1] hover:bg-[#818cf8] disabled:bg-gray-300 text-white font-semibold rounded-lg transition-colors"
                         >
                           {actionLoading ? 'Processing...' : 'Upgrade Plan'}
                         </button>
@@ -807,7 +807,7 @@ const Subscription = () => {
                 <button
                   onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
                   className={`mx-3 relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    billingCycle === 'yearly' ? 'bg-blue-600' : 'bg-gray-200'
+                    billingCycle === 'yearly' ? 'bg-[#6366f1]' : 'bg-gray-200'
                   }`}
                 >
                   <span
@@ -840,7 +840,7 @@ const Subscription = () => {
                       <div className="mt-auto">
                         <a
                           href="/contact"
-                          className="inline-block px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold rounded-lg hover:shadow-lg transition-all"
+                          className="inline-block px-6 py-3 bg-gradient-to-r from-[#818cf8] to-[#a78bfa] text-white font-semibold rounded-lg hover:shadow-lg transition-all"
                         >
                           Contact Sales
                         </a>
@@ -850,10 +850,10 @@ const Subscription = () => {
                 }
 
                 return (
-                  <div key={plan.id} className={`p-6 border-2 rounded-xl text-center flex flex-col h-full ${plan.popular ? 'border-blue-500 bg-blue-50' : 'border-gray-200'}`}>
+                  <div key={plan.id} className={`p-6 border-2 rounded-xl text-center flex flex-col h-full ${plan.popular ? 'border-indigo-500 bg-indigo-50' : 'border-gray-200'}`}>
                     <div className="flex-grow flex flex-col">
                       {plan.popular && (
-                        <div className="text-xs bg-blue-500 text-white px-3 py-1 rounded-full mb-4 inline-block">
+                        <div className="text-xs bg-[#6366f1] text-white px-3 py-1 rounded-full mb-4 inline-block">
                           Most Popular
                         </div>
                       )}
@@ -891,7 +891,7 @@ const Subscription = () => {
                         disabled={actionLoading}
                         className={`w-full py-3 px-6 font-semibold rounded-lg transition-all ${
                           plan.popular 
-                            ? 'bg-gradient-to-r from-blue-500 to-green-500 hover:shadow-lg text-white' 
+                            ? 'bg-gradient-to-r from-[#818cf8] to-[#a78bfa] hover:shadow-lg text-white' 
                             : 'bg-gray-900 hover:bg-gray-800 text-white'
                         }`}
                       >

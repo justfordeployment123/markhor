@@ -66,7 +66,7 @@ const AdminLogin = () => {
             </svg>
           </div>
           <h1 className="text-3xl font-bold text-white mb-2">Admin Portal</h1>
-          <p className="text-gray-300">SilverSurfers Administration</p>
+          <p className="text-gray-300">Markhor Systems Administration</p>
         </div>
 
         {/* Login Form */}
@@ -96,7 +96,7 @@ const AdminLogin = () => {
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-white placeholder-gray-300"
-                placeholder="admin@silversurfers.com"
+                placeholder="admin@markhorsystems.com"
                 required
               />
             </div>

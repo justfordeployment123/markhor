@@ -11,8 +11,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Reviews from './pages/Reviews';
 import Team from './pages/Team';
-import './App.css';
 import logoImg from './assets/markhor_logo.png';
+import './App.css';
 
 // Page transition wrapper
 const PageWrapper = ({ children }) => {
@@ -65,10 +65,8 @@ const LoadingScreen = ({ onComplete }) => {
   return (
     <div className={`loading-screen ${isExiting ? 'exit' : ''}`}>
       <div className="loading-content">
-        {/* Logo Animation */}
-        {/* Logo Animation */}
         <div className="loading-logo">
-          <div className="logo-mark">
+          <div className="loading-logo-img">
             <img
               src={logoImg}
               alt="Markhor Systems"
@@ -81,14 +79,12 @@ const LoadingScreen = ({ onComplete }) => {
           </div>
         </div>
 
-        {/* Progress Bar */}
         <div className="loading-progress">
           <div className="progress-bar" style={{ width: `${progress}%` }}></div>
         </div>
         <div className="loading-percentage">{progress}%</div>
       </div>
 
-      {/* Animated Background Elements */}
       <div className="loading-bg-elements">
         <div className="bg-element bg-element-1"></div>
         <div className="bg-element bg-element-2"></div>

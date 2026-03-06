@@ -23,7 +23,7 @@ const ProtectedRoute = ({ role = null, children }) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900 pt-24 pb-10 px-4">
+      <div className="min-h-screen bg-gradient-to-br from-[#050312] to-[#0a0520] pt-24 pb-10 px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header Skeleton */}
           <div className="text-center mb-12">

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { fetchJSON } from '../config/apiBase';
 import { RichTextPreviewDark } from '../components/RichTextEditor';
-import './Blog.css';
+import './pages.css';
 
 export default function BlogPost() {
   const { id: slug } = useParams();
@@ -15,9 +15,7 @@ export default function BlogPost() {
       try {
         setLoading(true);
         setError(null);
-        
         const { ok, data } = await fetchJSON(`/blogs/${slug}`);
-        
         if (ok) {
           setPost(data.post);
         } else {
@@ -25,29 +23,24 @@ export default function BlogPost() {
         }
       } catch (err) {
         setError('Failed to load blog post');
-        console.error('Blog post fetch error:', err);
       } finally {
         setLoading(false);
       }
     };
-
-    if (slug) {
-      fetchPost();
-    }
+    if (slug) fetchPost();
   }, [slug]);
 
-  // Loading state
   if (loading) {
     return (
-      <div className="pt-40 text-center text-white bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900 min-h-screen">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-700 rounded w-3/4 mx-auto mb-4"></div>
-            <div className="h-4 bg-gray-700 rounded w-1/2 mx-auto mb-8"></div>
-            <div className="space-y-3">
-              <div className="h-4 bg-gray-700 rounded"></div>
-              <div className="h-4 bg-gray-700 rounded w-5/6"></div>
-              <div className="h-4 bg-gray-700 rounded w-4/6"></div>
+      <div className="dark-page" style={{ paddingTop: '160px', textAlign: 'center' }}>
+        <div style={{ maxWidth: '48rem', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ animation: 'pulse 2s ease-in-out infinite' }}>
+            <div style={{ height: '32px', background: 'rgba(255,255,255,0.06)', borderRadius: '8px', width: '75%', margin: '0 auto 16px' }} />
+            <div style={{ height: '16px', background: 'rgba(255,255,255,0.04)', borderRadius: '8px', width: '50%', margin: '0 auto 32px' }} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ height: '16px', background: 'rgba(255,255,255,0.04)', borderRadius: '8px' }} />
+              <div style={{ height: '16px', background: 'rgba(255,255,255,0.04)', borderRadius: '8px', width: '83%' }} />
+              <div style={{ height: '16px', background: 'rgba(255,255,255,0.04)', borderRadius: '8px', width: '66%' }} />
             </div>
           </div>
         </div>
@@ -55,14 +48,13 @@ export default function BlogPost() {
     );
   }
 
-  // Error state
   if (error || !post) {
     return (
-      <div className="pt-40 text-center text-white bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900 min-h-screen">
-        <div className="max-w-3xl mx-auto px-6">
-          <p>{error || 'Post not found.'}</p>
-          <div className="mt-6">
-            <Link to="/blog" className="text-blue-300 hover:text-blue-200">
+      <div className="dark-page" style={{ paddingTop: '160px', textAlign: 'center' }}>
+        <div style={{ maxWidth: '48rem', margin: '0 auto', padding: '0 24px' }}>
+          <p style={{ fontFamily: 'DM Sans, sans-serif', color: 'rgba(255,255,255,0.5)' }}>{error || 'Post not found.'}</p>
+          <div style={{ marginTop: '24px' }}>
+            <Link to="/blog" style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.3s' }}>
               ← Back to Blog
             </Link>
           </div>
@@ -72,74 +64,64 @@ export default function BlogPost() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900">
-      {/* Header Section */}
-      <div className="pt-32 pb-16">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="mb-8">
-            <Link to="/blog" className="inline-flex items-center text-blue-300 hover:text-blue-200 transition-colors">
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div className="dark-page">
+      {/* Header */}
+      <div style={{ paddingTop: '128px', paddingBottom: '64px' }}>
+        <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ marginBottom: '32px' }}>
+            <Link to="/blog" style={{ display: 'inline-flex', alignItems: 'center', color: 'rgba(255,255,255,0.4)', fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.85rem', textDecoration: 'none', transition: 'color 0.3s', letterSpacing: '0.05em' }}>
+              <svg style={{ width: '16px', height: '16px', marginRight: '8px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Back to Blog
             </Link>
           </div>
-          
-          {/* Title */}
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+
+          <h1 style={{ fontFamily: 'Syne, sans-serif', fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 700, color: '#fff', marginBottom: '24px', lineHeight: 1.15, letterSpacing: '-0.02em' }}>
             {post.title}
           </h1>
-          
-          {/* Meta Information */}
-          <div className="flex flex-wrap gap-4 mb-8">
+
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginBottom: '32px' }}>
             {post.category && (
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-600/20 text-blue-200 border border-blue-400/30">
-                {post.category}
-              </span>
+              <span className="pg-tag">{post.category}</span>
             )}
             {post.author && (
-              <span className="text-gray-300 text-sm">
-                By <span className="font-medium text-white">{post.author}</span>
+              <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.82rem', color: 'rgba(255,255,255,0.35)' }}>
+                By <span style={{ color: 'rgba(255,255,255,0.65)' }}>{post.author}</span>
               </span>
             )}
             {post.readTime && (
-              <span className="text-gray-300 text-sm">
-                {post.readTime}
-              </span>
+              <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.82rem', color: 'rgba(255,255,255,0.35)' }}>{post.readTime}</span>
             )}
             {post.date && (
-              <span className="text-gray-300 text-sm">
-                {new Date(post.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
+              <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.82rem', color: 'rgba(255,255,255,0.35)' }}>
+                {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
               </span>
             )}
           </div>
         </div>
       </div>
 
-      {/* Excerpt Section */}
+      {/* Excerpt */}
       {post.excerpt && (
-        <div className="bg-white/5 backdrop-blur-sm border-t border-white/10 border-b border-white/10">
-          <div className="max-w-4xl mx-auto px-6 py-8">
-            <div className="text-xl text-gray-100 leading-relaxed">
+        <div style={{ background: 'rgba(255,255,255,0.02)', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+          <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '32px 24px' }}>
+            <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.15rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7 }}>
               <RichTextPreviewDark content={post.excerpt} />
             </div>
           </div>
         </div>
       )}
 
-      {/* Content Section */}
-      <div className="py-16">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/10">
+      {/* Content */}
+      <div style={{ padding: '64px 0' }}>
+        <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '0 24px' }}>
+          <div className="pg-card" style={{ padding: 'clamp(24px, 4vw, 48px)' }}>
             <article className="prose prose-lg prose-invert max-w-none">
               {post.content ? (
                 <RichTextPreviewDark content={post.content} />
               ) : (
-                <p className="text-gray-400 italic text-center py-8">
+                <p style={{ fontFamily: 'DM Sans, sans-serif', color: 'rgba(255,255,255,0.3)', fontStyle: 'italic', textAlign: 'center', padding: '32px 0' }}>
                   No content available for this post.
                 </p>
               )}
@@ -148,15 +130,15 @@ export default function BlogPost() {
         </div>
       </div>
 
-      {/* Footer Section */}
-      <div className="pb-16">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="border-t border-white/10 pt-8">
-            <Link 
-              to="/blog" 
-              className="inline-flex items-center text-blue-300 hover:text-blue-200 transition-colors"
+      {/* Footer */}
+      <div style={{ paddingBottom: '64px' }}>
+        <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '32px' }}>
+            <Link
+              to="/blog"
+              style={{ display: 'inline-flex', alignItems: 'center', color: 'rgba(255,255,255,0.4)', fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.85rem', textDecoration: 'none', transition: 'color 0.3s', letterSpacing: '0.05em' }}
             >
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg style={{ width: '16px', height: '16px', marginRight: '8px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Back to Blog

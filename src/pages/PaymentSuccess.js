@@ -56,9 +56,9 @@ const PaymentSuccess = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-gradient-to-br from-[#050312] to-[#0a0520] flex items-center justify-center px-4">
         <div className="bg-white rounded-3xl p-8 shadow-2xl max-w-md w-full text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-indigo-500 mx-auto mb-4"></div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Confirming Payment...</h2>
           <p className="text-gray-600">Please wait while we process your purchase.</p>
         </div>
@@ -68,7 +68,7 @@ const PaymentSuccess = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-gradient-to-br from-[#050312] to-[#0a0520] flex items-center justify-center px-4">
         <div className="bg-white rounded-3xl p-8 shadow-2xl max-w-md w-full text-center">
           <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg className="w-8 h-8 text-red-600" fill="currentColor" viewBox="0 0 20 20">
@@ -86,7 +86,7 @@ const PaymentSuccess = () => {
             </button>
             <button
               onClick={() => navigate('/contact')}
-              className="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all"
+              className="flex-1 px-6 py-3 bg-[#6366f1] text-white rounded-lg font-semibold hover:bg-[#818cf8] transition-all"
             >
               Contact Support
             </button>
@@ -97,7 +97,7 @@ const PaymentSuccess = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900 flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-[#050312] to-[#0a0520] flex items-center justify-center px-4 py-12">
       <div className="bg-white rounded-3xl p-8 shadow-2xl max-w-2xl w-full">
         {/* Success Icon */}
         <div className="text-center mb-8">
@@ -136,23 +136,23 @@ const PaymentSuccess = () => {
         </div>
 
         {/* What's Next */}
-        <div className="bg-blue-50 rounded-2xl p-6 mb-6 border border-blue-200">
+        <div className="bg-indigo-50 rounded-2xl p-6 mb-6 border border-indigo-200">
           <h2 className="text-lg font-semibold text-gray-900 mb-3">What's Next?</h2>
           <ul className="space-y-2 text-gray-700">
             <li className="flex items-start">
-              <svg className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-indigo-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               <span>Your one-time scan credit has been added to your account</span>
             </li>
             <li className="flex items-start">
-              <svg className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-indigo-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               <span>Click the button below to start your accessibility audit</span>
             </li>
             <li className="flex items-start">
-              <svg className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 text-indigo-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               <span>You'll receive a comprehensive PDF report via email</span>

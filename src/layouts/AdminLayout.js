@@ -145,7 +145,7 @@ const SidebarContent = ({ navigation }) => {
           </div>
           <div className="ml-3">
             <h1 className="text-lg font-semibold text-white">Admin Panel</h1>
-            <p className="text-xs text-gray-300">SilverSurfers</p>
+            <p className="text-xs text-gray-300">Markhor Systems</p>
           </div>
         </div>
       </div>

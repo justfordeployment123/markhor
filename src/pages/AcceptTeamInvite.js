@@ -126,11 +126,11 @@ const AcceptTeamInvite = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900 pt-24 pb-10">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#050312] to-[#0a0520] pt-24 pb-10">
         <div className="max-w-md w-full mx-4">
           <div className="bg-white rounded-2xl shadow-2xl p-8 text-center">
             <div className="w-16 h-16 mx-auto mb-6">
-              <svg className="animate-spin h-16 w-16 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <svg className="animate-spin h-16 w-16 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
@@ -144,7 +144,7 @@ const AcceptTeamInvite = () => {
 
   if (error && !success) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900 pt-24 pb-10">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#050312] to-[#0a0520] pt-24 pb-10">
         <div className="max-w-md w-full mx-4">
           <div className="bg-white rounded-2xl shadow-2xl p-8 text-center">
             <div className="w-16 h-16 mx-auto mb-6 bg-red-100 rounded-full flex items-center justify-center">
@@ -158,7 +158,7 @@ const AcceptTeamInvite = () => {
               {isAuthenticated && invitationDetails && (
                 <button
                   onClick={handleLogout}
-                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
+                  className="w-full bg-[#6366f1] text-white py-3 px-6 rounded-xl font-semibold hover:bg-[#818cf8] transition-colors"
                 >
                   Log Out & Continue with {invitationDetails.invitedEmail}
                 </button>
@@ -178,7 +178,7 @@ const AcceptTeamInvite = () => {
 
   if (success) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900 pt-24 pb-10">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#050312] to-[#0a0520] pt-24 pb-10">
         <div className="max-w-md w-full mx-4">
           <div className="bg-white rounded-2xl shadow-2xl p-8 text-center">
             <div className="w-16 h-16 mx-auto mb-6 bg-green-100 rounded-full flex items-center justify-center">
@@ -188,14 +188,14 @@ const AcceptTeamInvite = () => {
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-4">Welcome to the Team!</h1>
             <p className="text-gray-600 mb-6">
-              You have successfully joined the SilverSurfers team. You now have access to all team features and will share the subscription benefits.
+              You have successfully joined the Markhor Systems team. You now have access to all team features and will share the subscription benefits.
             </p>
             <p className="text-sm text-gray-500 mb-6">
               Redirecting to your subscription dashboard...
             </p>
             <button
               onClick={() => navigate('/subscription')}
-              className="w-full bg-blue-600 text-white py-3 px-6 rounded-xl font-semibold hover:bg-blue-700 transition-colors"
+              className="w-full bg-[#6366f1] text-white py-3 px-6 rounded-xl font-semibold hover:bg-[#818cf8] transition-colors"
             >
               Go to Dashboard Now
             </button>
@@ -206,21 +206,21 @@ const AcceptTeamInvite = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900 pt-24 pb-10">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#050312] to-[#0a0520] pt-24 pb-10">
       <div className="max-w-md w-full mx-4">
         <div className="bg-white rounded-2xl shadow-2xl p-8">
           <div className="text-center mb-8">
-            <div className="w-16 h-16 mx-auto mb-6 bg-blue-100 rounded-full flex items-center justify-center">
-              <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-16 h-16 mx-auto mb-6 bg-indigo-100 rounded-full flex items-center justify-center">
+              <svg className="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-2">Team Invitation</h1>
             <p className="text-gray-600 mb-2">
-              You've been invited to join a SilverSurfers team!
+              You've been invited to join a Markhor Systems team!
             </p>
             {invitationDetails && (
-              <div className="mt-4 p-4 bg-blue-50 rounded-lg">
+              <div className="mt-4 p-4 bg-indigo-50 rounded-lg">
                 <p className="text-sm text-gray-600">
                   <strong>Team Owner:</strong> {invitationDetails.teamOwnerEmail}
                 </p>
@@ -270,7 +270,7 @@ const AcceptTeamInvite = () => {
             <button
               onClick={handleAcceptInvitation}
               disabled={loading}
-              className="w-full bg-blue-600 text-white py-3 px-6 rounded-xl font-semibold hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
+              className="w-full bg-[#6366f1] text-white py-3 px-6 rounded-xl font-semibold hover:bg-[#818cf8] disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
             >
               {loading ? (
                 <>

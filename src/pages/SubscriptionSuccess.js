@@ -54,7 +54,7 @@ const SubscriptionSuccess = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900 pt-24 pb-10">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#050312] to-[#0a0520] pt-24 pb-10">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
           <p className="text-white text-lg">Confirming your subscription...</p>
@@ -64,12 +64,12 @@ const SubscriptionSuccess = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900 flex items-center justify-center pt-24 pb-10 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#050312] to-[#0a0520] flex items-center justify-center pt-24 pb-10 px-4">
       <div className="max-w-2xl mx-auto text-center">
         {success ? (
           <div className="bg-white rounded-3xl p-12 shadow-2xl">
             <div className="text-6xl mb-6">🎉</div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Welcome to SilverSurfers!</h1>
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">Welcome to Markhor Systems!</h1>
             <p className="text-xl text-gray-600 mb-8">
               Your subscription has been successfully activated. You can now access all the features of your plan.
             </p>
@@ -100,7 +100,7 @@ const SubscriptionSuccess = () => {
               {!subscriptionLoading && subscription && !subscription.isTeamMember && (
                 <button
                   onClick={() => navigate('/subscription')}
-                  className="w-full py-3 px-6 bg-gradient-to-r from-blue-500 via-green-600 to-teal-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  className="w-full py-3 px-6 bg-gradient-to-r from-[#818cf8] to-[#a78bfa] text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                 >
                   Manage Subscription
                 </button>
@@ -108,8 +108,8 @@ const SubscriptionSuccess = () => {
               
               {/* Show team member message if they are a team member */}
               {!subscriptionLoading && subscription && subscription.isTeamMember && (
-                <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl">
-                  <p className="text-blue-800 text-sm text-center">
+                <div className="p-4 bg-indigo-50 border border-indigo-200 rounded-xl">
+                  <p className="text-indigo-800 text-sm text-center">
                     You're using a team plan. Contact the plan owner to manage the subscription.
                   </p>
                 </div>
@@ -134,7 +134,7 @@ const SubscriptionSuccess = () => {
             <div className="space-y-4">
               <button
                 onClick={() => navigate('/subscription')}
-                className="w-full py-3 px-6 bg-gradient-to-r from-blue-500 via-green-600 to-teal-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                className="w-full py-3 px-6 bg-gradient-to-r from-[#818cf8] to-[#a78bfa] text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
               >
                 Try Again
               </button>

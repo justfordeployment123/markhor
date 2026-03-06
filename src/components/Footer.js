@@ -66,17 +66,17 @@ const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-5">
-            <Link to="/" className="inline-flex items-center space-x-1.5 group">
-              {/* Logo Image */}
-              <div className="relative w-14 h-14 flex-shrink-0">
+            <Link to="/" className="inline-flex items-center space-x-2.5 group">
+              {/* Logo Mark */}
+              <div className="relative w-12 h-12 flex-shrink-0 transition-all duration-300 group-hover:scale-110">
                 <img
                   src={logoImg}
                   alt="Markhor Systems"
-                  className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tight" 
+                <span className="text-xl font-bold tracking-tight"
                   style={{ fontFamily: 'Syne, sans-serif' }}>
                   MARKHOR
                 </span>

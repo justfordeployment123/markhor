@@ -151,7 +151,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-green-950 via-teal-950 to-cyan-900 pt-24 pb-10 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#050312] to-[#0a0520] pt-24 pb-10 px-4">
       <div className="max-w-lg mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-white mb-4">Start Your Accessibility Audit</h1>
@@ -167,7 +167,7 @@ const Checkout = () => {
               </div>
             </div>
           ) : subscription && subscription.status === 'active' ? (
-            <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="mb-6 p-4 bg-indigo-50 border border-indigo-200 rounded-lg">
               <div className="flex items-center justify-between mb-3">
                 <h3 className="text-lg font-semibold text-gray-900">Subscription Status</h3>
                 <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
@@ -274,7 +274,7 @@ const Checkout = () => {
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 placeholder="https://yourwebsite.com"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
                 required
               />
             </div>
@@ -289,7 +289,7 @@ const Checkout = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
                 required
               />
             </div>
@@ -306,7 +306,7 @@ const Checkout = () => {
                   onChange={(e) => setFirstName(e.target.value)}
                   placeholder="John"
                   autoComplete="given-name"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
                   required
                 />
               </div>
@@ -321,7 +321,7 @@ const Checkout = () => {
                   onChange={(e) => setLastName(e.target.value)}
                   placeholder="Doe"
                   autoComplete="family-name"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900"
                   required
                 />
               </div>
@@ -342,7 +342,7 @@ const Checkout = () => {
                     onClick={() => setSelectedDevice('desktop')}
                     className={`p-4 border-2 rounded-lg transition-all ${
                       selectedDevice === 'desktop'
-                        ? 'border-blue-500 bg-blue-50 text-blue-700'
+                        ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
                         : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
                     }`}
                   >
@@ -357,7 +357,7 @@ const Checkout = () => {
                     onClick={() => setSelectedDevice('tablet')}
                     className={`p-4 border-2 rounded-lg transition-all ${
                       selectedDevice === 'tablet'
-                        ? 'border-blue-500 bg-blue-50 text-blue-700'
+                        ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
                         : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
                     }`}
                   >
@@ -372,7 +372,7 @@ const Checkout = () => {
                     onClick={() => setSelectedDevice('mobile')}
                     className={`p-4 border-2 rounded-lg transition-all ${
                       selectedDevice === 'mobile'
-                        ? 'border-blue-500 bg-blue-50 text-blue-700'
+                        ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
                         : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
                     }`}
                   >
@@ -402,7 +402,7 @@ const Checkout = () => {
             <button
               type="submit"
               disabled={loading || !canStartAudit()}
-              className={`w-full bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600 disabled:opacity-50 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center ${
+              className={`w-full bg-gradient-to-r from-[#818cf8] to-[#a78bfa] hover:from-[#a78bfa] hover:to-[#c084fc] disabled:opacity-50 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center ${
                 !canStartAudit() ? 'cursor-not-allowed' : ''
               }`}
             >
@@ -425,7 +425,7 @@ const Checkout = () => {
           <div className="mt-6 text-center">
             <button
               onClick={() => navigate('/subscription')}
-              className="text-blue-600 hover:text-blue-800 font-medium"
+              className="text-indigo-600 hover:text-indigo-800 font-medium"
             >
               ← Back to Subscription
             </button>
