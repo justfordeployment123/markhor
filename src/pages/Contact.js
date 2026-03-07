@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import RevealOnScroll from '../components/RevealOnScroll';
-import MagneticButton from '../components/MagneticButton';
 import PageHero from '../components/PageHero';
 import './pages.css';
 

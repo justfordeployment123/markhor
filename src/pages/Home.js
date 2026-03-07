@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import ParticleField from '../components/ParticleField';
 import MagneticButton from '../components/MagneticButton';
 import RevealOnScroll from '../components/RevealOnScroll';
 import TextScramble from '../components/TextScramble';

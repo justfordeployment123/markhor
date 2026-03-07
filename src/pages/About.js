@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import RevealOnScroll from '../components/RevealOnScroll';
 import PageHero from '../components/PageHero';
 import MagneticButton from '../components/MagneticButton';
