@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import RevealOnScroll from '../components/RevealOnScroll';
-import PageHero from '../components/PageHero';
 import MagneticButton from '../components/MagneticButton';
-import './pages.css';
+import logoImg from '../assets/markhor_logo.png';
+import './Home.css';
 
 const About = () => {
   const values = [
@@ -21,132 +22,158 @@ const About = () => {
     { year: '2024', title: 'AI Innovation', description: 'Launched advanced AI development services with LLM expertise.' },
   ];
 
-  const stats = [
-    { value: '50+', label: 'Projects Completed' },
-    { value: '30+', label: 'Happy Clients' },
-    { value: '5+', label: 'Years Experience' },
-    { value: '99%', label: 'Satisfaction Rate' },
-  ];
-
   return (
-    <div className="dark-page">
+    <div className="home-page">
 
-      <PageHero
-        label="About Us"
-        preTitle="— We believe"
-        outlineTitle="software"
-        solidTitle="should feel invisible."
-        description="Founded in 2019 in Lahore — a passionate team dedicated to building digital products that make a real difference."
-      />
+      {/* ── HERO ── */}
+      <section className="hero" style={{ minHeight: 'auto' }}>
+        <div className="hero-bg" />
+        <div className="hero-glow hero-glow-1" />
+        <div className="hero-glow hero-glow-2" />
+        <div className="hero-grid-overlay" />
 
-      {/* ── Stats ── */}
-      <section className="page-section-alt">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
-            {stats.map((stat, i) => (
-              <RevealOnScroll key={i} animation="fadeUp" delay={i * 80}>
-                <div>
-                  <div className="pg-stat-value">{stat.value}</div>
-                  <div className="pg-stat-label">{stat.label}</div>
-                </div>
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10 w-full pt-32 pb-16 lg:pt-40 lg:pb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <RevealOnScroll animation="fadeUp" delay={0}>
+                <p className="hero-label" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                  About Us
+                </p>
               </RevealOnScroll>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ── Our Story ── */}
-      <section className="page-section">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <RevealOnScroll animation="fadeUp">
-              <div>
-                <span className="page-section-label">Our Story</span>
-                <h2 className="page-section-heading">From idea to impact.</h2>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '8px' }}>
-                  <p className="page-section-desc">
-                    Markhor Systems was founded with a simple belief: technology should empower businesses
-                    and delight users. Named after the majestic Markhor — Pakistan's national animal known
-                    for its strength and resilience — we embody those same qualities.
-                  </p>
-                  <p className="page-section-desc">
-                    What started as a small team passionate about mobile development has grown into a
-                    full-service digital agency. Today, we help startups and enterprises transform their
-                    ideas into powerful mobile apps, web platforms, and AI-driven solutions.
-                  </p>
-                  <p className="page-section-desc">
-                    We don't just write code — we craft experiences that people love to use.
-                  </p>
-                </div>
-                <div style={{ marginTop: '40px' }}>
-                  <MagneticButton to="/contact" className="pg-btn-primary" strength={0.2}>
+              <RevealOnScroll animation="fadeUp" delay={120}>
+                <h1 className="hero-heading" style={{ fontFamily: 'Syne, sans-serif' }}>
+                  We believe great software should feel
+                  <br /><span className="hero-heading-accent">invisible.</span>
+                </h1>
+              </RevealOnScroll>
+
+              <RevealOnScroll animation="fadeUp" delay={280}>
+                <p className="hero-desc" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                  Founded in 2019 in Lahore — a passionate team dedicated to building
+                  digital products that make a real difference.
+                </p>
+              </RevealOnScroll>
+
+              <RevealOnScroll animation="fadeUp" delay={400}>
+                <div className="hero-actions">
+                  <MagneticButton to="/contact" className="btn-primary" style={{ fontFamily: 'Space Grotesk, sans-serif' }} strength={0.3}>
                     Work with us
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </MagneticButton>
-                </div>
-              </div>
-            </RevealOnScroll>
-
-            <RevealOnScroll animation="fadeUp" delay={150}>
-              <div className="pg-placeholder aspect-square" style={{ minHeight: '360px' }}>
-                Image Placeholder
-              </div>
-            </RevealOnScroll>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Values ── */}
-      <section className="page-section-alt">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
-          <RevealOnScroll animation="fadeUp">
-            <div className="mb-16">
-              <span className="page-section-label">Our Values</span>
-              <h2 className="page-section-heading">What drives us.</h2>
-            </div>
-          </RevealOnScroll>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((v, i) => (
-              <RevealOnScroll key={i} animation="fadeUp" delay={i * 100}>
-                <div className="pg-card p-8">
-                  <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.2)', marginBottom: '20px' }}>{v.num}</div>
-                  <h3 style={{ fontFamily: 'Syne, sans-serif', fontSize: '1.2rem', fontWeight: 700, color: '#fff', marginBottom: '12px' }}>{v.title}</h3>
-                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.4)', lineHeight: 1.7 }}>{v.description}</p>
+                  <MagneticButton to="/services" className="btn-ghost" style={{ fontFamily: 'Space Grotesk, sans-serif' }} strength={0.2}>
+                    Our Services
+                  </MagneticButton>
                 </div>
               </RevealOnScroll>
-            ))}
+            </div>
+
+            {/* Logo */}
+            <RevealOnScroll animation="fadeUp" delay={200} className="hidden lg:flex items-center justify-center">
+              <div className="hero-logo-wrap" style={{ width: '320px', height: '320px' }}>
+                <div className="hero-logo-glow" />
+                <img src={logoImg} alt="Markhor Systems" className="hero-logo" style={{ mixBlendMode: 'screen' }} />
+              </div>
+            </RevealOnScroll>
+          </div>
+
+          {/* Stats row */}
+          <RevealOnScroll animation="fadeUp" delay={550}>
+            <div className="hero-stats">
+              {[
+                { val: '50+', label: 'Projects' },
+                { val: '30+', label: 'Clients' },
+                { val: '5+', label: 'Years' },
+                { val: '99%', label: 'Satisfaction' },
+              ].map((s, i) => (
+                <div key={i} className="hero-stat">
+                  <span className="hero-stat-val" style={{ fontFamily: 'Syne, sans-serif' }}>{s.val}</span>
+                  <span className="hero-stat-label" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </RevealOnScroll>
+        </div>
+      </section>
+
+      {/* ── OUR STORY (same as landing about section) ── */}
+      <section className="about-section">
+        <div className="section-bg" />
+        <div className="section-glow section-glow-center" />
+
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
+          <div className="about-split">
+            {/* Left — heading inside glass card */}
+            <RevealOnScroll animation="fadeUp">
+              <div className="about-heading-card">
+                <div className="about-heading-card-glow" />
+                <h2 className="about-heading" style={{ fontFamily: 'Syne, sans-serif' }}>
+                  From idea to
+                  <span className="text-accent"> impact.</span>
+                </h2>
+                <div className="about-heading-line" />
+              </div>
+            </RevealOnScroll>
+
+            {/* Right — body text */}
+            <div className="about-body">
+              <RevealOnScroll animation="fadeUp" delay={150}>
+                <p className="about-text" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                  Markhor Systems was founded with a simple belief: technology should empower businesses
+                  and delight users. Named after the majestic Markhor — Pakistan's national animal known
+                  for its strength and resilience — we embody those same qualities.
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll animation="fadeUp" delay={250}>
+                <p className="about-text" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                  What started as a small team passionate about mobile development has grown into a
+                  full-service digital agency. Today, we help startups and enterprises transform their
+                  ideas into powerful mobile apps, web platforms, and AI-driven solutions.
+                </p>
+              </RevealOnScroll>
+              <RevealOnScroll animation="fadeUp" delay={350}>
+                <p className="about-text" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                  We don't just write code — we craft experiences that people love to use.
+                </p>
+              </RevealOnScroll>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Timeline ── */}
-      <section className="page-section">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
-          <RevealOnScroll animation="fadeUp">
-            <div className="mb-16 text-center">
-              <span className="page-section-label">Our Journey</span>
-              <h2 className="page-section-heading">Milestones.</h2>
-            </div>
-          </RevealOnScroll>
+      {/* ── VALUES (split layout — heading left, stacked values right) ── */}
+      <section className="about-section">
+        <div className="section-bg" />
+        <div className="section-glow section-glow-left" />
 
-          <div className="relative max-w-4xl mx-auto">
-            <div className="pg-timeline-line hidden md:block" />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
-              {milestones.map((m, i) => (
-                <RevealOnScroll key={i} animation="fadeUp" delay={i * 80}>
-                  <div className={`flex flex-col md:flex-row items-center gap-8 ${i % 2 === 0 ? '' : 'md:flex-row-reverse'}`}>
-                    <div className={`flex-1 ${i % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                      <div className="pg-card p-6" style={{ display: 'inline-block', width: '100%' }}>
-                        <div style={{ fontFamily: 'Syne, sans-serif', fontSize: '2.5rem', fontWeight: 800, color: 'rgba(255,255,255,0.08)', marginBottom: '4px' }}>{m.year}</div>
-                        <h3 style={{ fontFamily: 'Syne, sans-serif', fontSize: '1.1rem', fontWeight: 700, color: '#fff', marginBottom: '6px' }}>{m.title}</h3>
-                        <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.38)', lineHeight: 1.6 }}>{m.description}</p>
-                      </div>
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
+          <div className="about-split">
+            <RevealOnScroll animation="fadeUp">
+              <div className="about-heading-card">
+                <div className="about-heading-card-glow" />
+                <h2 className="about-heading" style={{ fontFamily: 'Syne, sans-serif' }}>
+                  What drives
+                  <span className="text-accent"> us.</span>
+                </h2>
+                <div className="about-heading-line" />
+              </div>
+            </RevealOnScroll>
+
+            <div className="about-body">
+              {values.map((v, i) => (
+                <RevealOnScroll key={i} animation="fadeUp" delay={80 + i * 80}>
+                  <div style={{
+                    borderLeft: '2px solid rgba(180,160,255,0.15)',
+                    paddingLeft: '20px',
+                    marginBottom: '24px',
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '4px' }}>
+                      <span style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '11px', color: 'rgba(180,160,255,0.3)', letterSpacing: '0.1em' }}>{v.num}</span>
+                      <h4 style={{ fontFamily: 'Syne, sans-serif', fontSize: '1rem', fontWeight: 700, color: '#fff' }}>{v.title}</h4>
                     </div>
-                    <div className="pg-timeline-dot hidden md:flex" />
-                    <div className="flex-1" />
+                    <p className="about-text" style={{ fontFamily: 'DM Sans, sans-serif', marginBottom: 0 }}>{v.description}</p>
                   </div>
                 </RevealOnScroll>
               ))}
@@ -155,25 +182,111 @@ const About = () => {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="page-cta">
-        <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-16">
+      {/* ── MILESTONES (text rows with thin borders) ── */}
+      <section className="work-section">
+        <div className="section-bg" />
+        <div className="section-glow section-glow-left" />
+
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 relative z-10">
           <RevealOnScroll animation="fadeUp">
-            <h2 className="page-cta-heading">Ready to work<br />together?</h2>
-          </RevealOnScroll>
-          <RevealOnScroll animation="fadeUp" delay={150}>
-            <p className="page-cta-desc">Let's discuss your next project and explore how we can bring your vision to life.</p>
-          </RevealOnScroll>
-          <RevealOnScroll animation="fadeUp" delay={280}>
-            <div className="page-cta-buttons">
-              <MagneticButton to="/contact" className="pg-btn-primary" strength={0.3}>
-                Get in Touch
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </MagneticButton>
-              <MagneticButton to="/services" className="pg-btn-ghost" strength={0.2}>View Our Services</MagneticButton>
+            <div className="work-heading-wrap">
+              <p className="section-label" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>Our Journey</p>
+              <h2 className="work-heading" style={{ fontFamily: 'Syne, sans-serif' }}>
+                Milestones<span className="text-accent">.</span>
+              </h2>
             </div>
+          </RevealOnScroll>
+
+          {milestones.map((m, i) => (
+            <RevealOnScroll key={i} animation="fadeUp" delay={i * 70}>
+              <div style={{
+                padding: '24px 0',
+                borderBottom: '1px solid rgba(180,160,255,0.06)',
+                display: 'grid',
+                gridTemplateColumns: 'auto 1fr',
+                gap: '32px',
+                alignItems: 'baseline',
+              }}>
+                <span style={{
+                  fontFamily: 'Syne, sans-serif',
+                  fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
+                  fontWeight: 800,
+                  color: 'rgba(180,160,255,0.18)',
+                  minWidth: '60px',
+                }}>{m.year}</span>
+                <div>
+                  <h3 style={{
+                    fontFamily: 'Syne, sans-serif',
+                    fontSize: '1rem',
+                    fontWeight: 700,
+                    color: '#fff',
+                    marginBottom: '4px',
+                  }}>{m.title}</h3>
+                  <p style={{
+                    fontFamily: 'DM Sans, sans-serif',
+                    fontSize: '0.88rem',
+                    color: 'rgba(255,255,255,0.4)',
+                    lineHeight: 1.65,
+                  }}>{m.description}</p>
+                </div>
+              </div>
+            </RevealOnScroll>
+          ))}
+        </div>
+      </section>
+
+      {/* ── TESTIMONIAL (same as landing) ── */}
+      <section className="testimonial-section">
+        <div className="section-bg" />
+        <div className="section-glow section-glow-center" />
+
+        <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-16 text-center relative z-10">
+          <RevealOnScroll animation="fadeUp">
+            <p className="section-label" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>What They Say</p>
+            <div className="testimonial-card">
+              <div className="testimonial-card-glow" />
+              <blockquote className="testimonial-quote" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                "Markhor Systems transformed our vision into a beautiful, functional app.
+                Their attention to detail and technical expertise is unmatched."
+              </blockquote>
+              <div className="testimonial-divider" />
+              <p className="testimonial-author" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                Sarah Chen
+              </p>
+              <p className="testimonial-role" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                CEO, TechStart Inc.
+              </p>
+            </div>
+          </RevealOnScroll>
+        </div>
+      </section>
+
+      {/* ── CTA (same as landing) ── */}
+      <section className="cta-section">
+        <div className="cta-bg" />
+        <div className="cta-glow" />
+
+        <div className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-16 text-center relative z-10">
+          <RevealOnScroll animation="fadeUp">
+            <h2 className="cta-heading" style={{ fontFamily: 'Syne, sans-serif' }}>
+              Ready to work<br />
+              <span className="text-accent">together?</span>
+            </h2>
+          </RevealOnScroll>
+
+          <RevealOnScroll animation="fadeUp" delay={150}>
+            <MagneticButton to="/contact" className="btn-primary btn-primary-lg" style={{ fontFamily: 'Space Grotesk, sans-serif' }} strength={0.3}>
+              Get in Touch
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </MagneticButton>
+          </RevealOnScroll>
+
+          <RevealOnScroll animation="fadeUp" delay={280}>
+            <a href="mailto:hello@markhorsystems.com" className="cta-email" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+              hello@markhorsystems.com
+            </a>
           </RevealOnScroll>
         </div>
       </section>

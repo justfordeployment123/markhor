@@ -1041,16 +1041,6 @@ main {
   will-change: transform, opacity;
 }
 
-/* Hide default cursor on desktop for magic cursor */
-@media (hover: hover) and (pointer: fine) {
-  body {
-    cursor: none;
-  }
-  
-  a, button, [role="button"], input, textarea, select {
-    cursor: none;
-  }
-}
 
 /* Text Scramble */
 .text-scramble {

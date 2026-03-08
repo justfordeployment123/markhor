@@ -1,2 +1,201 @@
-/* Footer — styles applied inline via Tailwind in Footer.js */
-/* This file is intentionally minimal to prevent legacy style conflicts */
+/* ══════════════════════
+   FOOTER — Dark Purple Theme
+   ══════════════════════ */
+
+.footer {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+.footer-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(80,40,160,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 20%, rgba(100,50,190,0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #0a0818 0%, #080614 100%);
+  pointer-events: none;
+}
+
+.footer-glow {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(120,70,220,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(60px);
+}
+
+/* Brand */
+.footer-brand-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.footer-brand-sub {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(180,160,255,0.35);
+}
+
+.footer-desc {
+  margin-top: 20px;
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.75;
+  max-width: 380px;
+}
+
+/* Contact */
+.footer-contact {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a.footer-contact-item:hover {
+  color: rgba(200,180,255,0.7);
+}
+
+/* Column titles */
+.footer-col-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 18px;
+}
+
+/* Nav links */
+.footer-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-nav-link {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.30);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-nav-link:hover {
+  color: rgba(200,180,255,0.7);
+  padding-left: 4px;
+}
+
+/* Newsletter */
+.footer-newsletter-desc {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.30);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.footer-newsletter-form {
+  display: flex;
+  gap: 8px;
+}
+
+.footer-newsletter-input {
+  flex: 1;
+  padding: 10px 14px;
+  background: rgba(140,100,240,0.06);
+  border: 1px solid rgba(180,160,255,0.10);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.footer-newsletter-input::placeholder {
+  color: rgba(180,160,255,0.25);
+}
+
+.footer-newsletter-input:focus {
+  border-color: rgba(180,160,255,0.30);
+}
+
+.footer-newsletter-btn {
+  padding: 10px 16px;
+  background: rgba(255,255,255,0.9);
+  color: #100D25;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.footer-newsletter-btn:hover {
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(140,100,240,0.20);
+}
+
+/* Bottom bar */
+.footer-bottom {
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid rgba(180,160,255,0.06);
+}
+
+.footer-copyright {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.20);
+}
+
+.footer-social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.25);
+  background: rgba(140,100,240,0.06);
+  border: 1px solid rgba(180,160,255,0.08);
+  transition: all 0.3s ease;
+}
+
+.footer-social-icon:hover {
+  color: rgba(200,180,255,0.8);
+  background: rgba(140,100,240,0.12);
+  border-color: rgba(180,160,255,0.20);
+  transform: translateY(-2px);
+}
+
+.footer-legal-link {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.20);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-legal-link:hover {
+  color: rgba(200,180,255,0.6);
+}

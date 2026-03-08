@@ -4,7 +4,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import FloatingContact from './components/FloatingContact';
-import MagicCursor from './components/MagicCursor';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import About from './pages/About';
@@ -99,7 +98,6 @@ const AppContent = () => {
   return (
     <>
       <ScrollToTop />
-      <MagicCursor />
       <Header />
       <main>
         <PageWrapper>
