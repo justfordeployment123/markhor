@@ -3,17 +3,19 @@ import React, { useEffect, useRef, useState } from 'react';
 const RevealOnScroll = ({ 
   children, 
   className = '',
-  animation = 'fadeUp', // fadeUp, fadeDown, fadeLeft, fadeRight, scale, rotate, flip
+  animation = 'fadeUp',
   delay = 0,
-  duration = 800,
-  threshold = 0.2,
+  duration = 600,
+  threshold = 0.1,
   once = true,
-  stagger = 0, // for staggering children
+  stagger = 0,
+  immediate = false, // skip observer for above-fold content
 }) => {
   const ref = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(immediate);
 
   useEffect(() => {
+    if (immediate) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -33,7 +35,7 @@ const RevealOnScroll = ({
     }
 
     return () => observer.disconnect();
-  }, [threshold, once]);
+  }, [threshold, once, immediate]);
 
   const animations = {
     fadeUp: {
@@ -83,8 +85,7 @@ const RevealOnScroll = ({
       className={`reveal-on-scroll ${className} ${isVisible ? 'is-visible' : ''}`}
       style={{
         ...state,
-        transition: `all ${duration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay + stagger}ms`,
-        willChange: 'transform, opacity',
+        transition: `opacity ${duration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay + stagger}ms, transform ${duration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay + stagger}ms`,
       }}
     >
       {children}

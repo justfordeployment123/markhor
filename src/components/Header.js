@@ -8,11 +8,24 @@ const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
+    let ticking = false;
+    let lastScrolled = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrolled = window.scrollY > 50;
+          if (scrolled !== lastScrolled) {
+            lastScrolled = scrolled;
+            setIsScrolled(scrolled);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -40,9 +53,9 @@ const Header = () => {
             : 'header-glass-scrolled'
       }`}
       style={isScrolled || !isDarkHero ? {
-        background: 'rgba(8, 6, 19, 0.7)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
+        background: 'rgba(8, 6, 19, 0.85)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
       } : {}}
     >
@@ -135,8 +148,8 @@ const Header = () => {
           className={`lg:hidden transition-all duration-500 overflow-hidden ${isMobileMenuOpen ? 'max-h-screen pb-6' : 'max-h-0'}`}
           style={{
             background: 'rgba(8, 6, 19, 0.95)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
             borderTop: isMobileMenuOpen ? '1px solid rgba(255, 255, 255, 0.06)' : 'none',
           }}
         >

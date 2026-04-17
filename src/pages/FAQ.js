@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import RevealOnScroll from '../components/RevealOnScroll';
-import MagneticButton from '../components/MagneticButton';
+import { Link } from 'react-router-dom';
 import './pages.css';
 import './FAQ.css';
 import { fetchJSON } from '../config/apiBase';
@@ -163,13 +163,13 @@ const FAQ = () => {
           </RevealOnScroll>
           <RevealOnScroll animation="fadeUp" delay={280}>
             <div className="page-cta-buttons">
-              <MagneticButton to="/contact" className="pg-btn-primary" strength={0.3}>
+              <Link to="/contact" className="pg-btn-primary">
                 Get in Touch
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </MagneticButton>
-              <MagneticButton to="/services" className="pg-btn-ghost" strength={0.2}>View Services</MagneticButton>
+              </Link>
+              <Link to="/services" className="pg-btn-ghost">View Services</Link>
             </div>
           </RevealOnScroll>
         </div>

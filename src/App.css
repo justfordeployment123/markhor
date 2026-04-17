@@ -1,7 +1,7 @@
 /* Markhor Systems - Modern Black & White Design System */
 
 /* Import Premium Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
 
 /* CSS Custom Properties for Midnight Blue Theme */
 :root {
@@ -513,6 +513,11 @@
 /* Smooth Page Transitions */
 main {
   flex: 1;
+}
+
+.page-loading {
+  min-height: 60vh;
+  background: transparent;
 }
 
 .page-transition {

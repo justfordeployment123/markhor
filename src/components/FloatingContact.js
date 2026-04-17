@@ -6,12 +6,24 @@ const FloatingContact = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
-    // Show button after scrolling down
+    let ticking = false;
+    let lastVisible = false;
     const handleScroll = () => {
-      setIsVisible(window.scrollY > 300);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const visible = window.scrollY > 300;
+          if (visible !== lastVisible) {
+            lastVisible = visible;
+            setIsVisible(visible);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -161,9 +173,11 @@ const FloatingContact = () => {
           transform: translate(-50%, -50%);
           border-radius: 50%;
           border: 2px solid rgba(0, 0, 0, 0.3);
-          animation: pulseRing 2s ease-out infinite;
+          animation: pulseRing 2.5s ease-out infinite;
         }
-
+        @media (prefers-reduced-motion: reduce) {
+          .pulse-ring { animation: none; opacity: 0; }
+        }
         @keyframes pulseRing {
           0% {
             transform: translate(-50%, -50%) scale(1);

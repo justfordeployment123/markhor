@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
 const MagneticButton = ({ 
@@ -12,42 +12,52 @@ const MagneticButton = ({
   ...props 
 }) => {
   const buttonRef = useRef(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const innerRef = useRef(null);
+  const rafId = useRef(null);
+  const posRef = useRef({ x: 0, y: 0 });
 
-  const handleMouseMove = (e) => {
+  const updateTransform = useCallback(() => {
+    if (!buttonRef.current) return;
+    const { x, y } = posRef.current;
+    buttonRef.current.style.transform = `translate(${x}px, ${y}px)`;
+    buttonRef.current.style.transition = x === 0 && y === 0
+      ? 'transform 0.4s cubic-bezier(0.33, 1, 0.68, 1)'
+      : 'none';
+    if (innerRef.current) {
+      innerRef.current.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      innerRef.current.style.transition = x === 0 && y === 0 ? 'transform 0.4s cubic-bezier(0.33, 1, 0.68, 1)' : 'none';
+    }
+    rafId.current = null;
+  }, []);
+
+  const handleMouseMove = useCallback((e) => {
     if (!buttonRef.current) return;
 
     const rect = buttonRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
 
-    const distanceX = (e.clientX - centerX) * strength;
-    const distanceY = (e.clientY - centerY) * strength;
+    posRef.current = {
+      x: (e.clientX - centerX) * strength,
+      y: (e.clientY - centerY) * strength,
+    };
 
-    setPosition({ x: distanceX, y: distanceY });
-  };
+    if (rafId.current === null) {
+      rafId.current = requestAnimationFrame(updateTransform);
+    }
+  }, [strength, updateTransform]);
 
-  const handleMouseLeave = () => {
-    setPosition({ x: 0, y: 0 });
-  };
+  const handleMouseLeave = useCallback(() => {
+    posRef.current = { x: 0, y: 0 };
+    if (rafId.current === null) {
+      rafId.current = requestAnimationFrame(updateTransform);
+    }
+  }, [updateTransform]);
 
-  const buttonStyle = {
-    ...style,
-    transform: `translate(${position.x}px, ${position.y}px)`,
-    transition: position.x === 0 && position.y === 0 
-      ? 'transform 0.5s cubic-bezier(0.33, 1, 0.68, 1)' 
-      : 'transform 0.1s ease-out',
-  };
-
-  const innerStyle = {
-    transform: `translate(${position.x * 0.3}px, ${position.y * 0.3}px)`,
-    transition: position.x === 0 && position.y === 0 
-      ? 'transform 0.5s cubic-bezier(0.33, 1, 0.68, 1)' 
-      : 'transform 0.1s ease-out',
-  };
+  const buttonStyle = { ...style };
 
   const content = (
-    <span style={innerStyle} className="magnetic-inner">
+    <span ref={innerRef} className="magnetic-inner">
       {children}
     </span>
   );
