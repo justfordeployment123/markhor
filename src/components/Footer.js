@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import PrefetchLink from './PrefetchLink';
 import logoImg from '../assets/markhor_logo.png';
 import './Footer.css';
 
@@ -71,7 +71,7 @@ const Footer = () => {
 
           {/* Brand */}
           <div className="lg:col-span-5">
-            <Link to="/" className="inline-flex items-center space-x-2.5 group">
+            <PrefetchLink to="/" className="inline-flex items-center space-x-2.5 group">
               <div className="relative w-11 h-11 flex-shrink-0 transition-all duration-300 group-hover:scale-110">
                 <img
                   src={logoImg}
@@ -88,7 +88,7 @@ const Footer = () => {
                   Systems
                 </span>
               </div>
-            </Link>
+            </PrefetchLink>
 
             <p className="footer-desc" style={{ fontFamily: 'DM Sans, sans-serif' }}>
               We build exceptional digital products that drive business growth.
@@ -121,9 +121,9 @@ const Footer = () => {
                 <ul className="footer-nav">
                   {navigation.services.map((item) => (
                     <li key={item.name}>
-                      <Link to={item.href} className="footer-nav-link" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                      <PrefetchLink to={item.href} className="footer-nav-link" style={{ fontFamily: 'DM Sans, sans-serif' }}>
                         {item.name}
-                      </Link>
+                      </PrefetchLink>
                     </li>
                   ))}
                 </ul>
@@ -134,9 +134,9 @@ const Footer = () => {
                 <ul className="footer-nav">
                   {navigation.company.map((item) => (
                     <li key={item.name}>
-                      <Link to={item.href} className="footer-nav-link" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                      <PrefetchLink to={item.href} className="footer-nav-link" style={{ fontFamily: 'DM Sans, sans-serif' }}>
                         {item.name}
-                      </Link>
+                      </PrefetchLink>
                     </li>
                   ))}
                 </ul>
@@ -181,12 +181,12 @@ const Footer = () => {
             </div>
 
             <div className="flex items-center gap-6">
-              <Link to="/privacy" className="footer-legal-link" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+              <PrefetchLink to="/privacy" className="footer-legal-link" style={{ fontFamily: 'DM Sans, sans-serif' }}>
                 Privacy Policy
-              </Link>
-              <Link to="/terms" className="footer-legal-link" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+              </PrefetchLink>
+              <PrefetchLink to="/terms" className="footer-legal-link" style={{ fontFamily: 'DM Sans, sans-serif' }}>
                 Terms of Service
-              </Link>
+              </PrefetchLink>
             </div>
           </div>
         </div>

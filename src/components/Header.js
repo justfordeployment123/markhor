@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import PrefetchLink from './PrefetchLink';
 import logoImg from '../assets/markhor_logo.png';
 
 const Header = () => {
@@ -62,7 +63,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2.5 group" onClick={closeMobileMenu}>
+          <PrefetchLink to="/" className="flex items-center space-x-2.5 group" onClick={closeMobileMenu}>
             <div className="relative w-11 h-11 flex-shrink-0 transition-all duration-300 group-hover:scale-110">
               <img
                 src={logoImg}
@@ -80,7 +81,7 @@ const Header = () => {
                 Systems
               </span>
             </div>
-          </Link>
+          </PrefetchLink>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
@@ -92,7 +93,7 @@ const Header = () => {
               { path: '/team', label: 'Team' },
               { path: '/contact', label: 'Contact' },
             ].map((item) => (
-              <Link
+              <PrefetchLink
                 key={item.path}
                 to={item.path}
                 className={`px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full ${
@@ -109,13 +110,13 @@ const Header = () => {
                 }}
               >
                 {item.label}
-              </Link>
+              </PrefetchLink>
             ))}
           </nav>
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
-            <Link
+            <PrefetchLink
               to="/contact"
               className="px-6 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 transform hover:scale-105"
               style={{
@@ -126,7 +127,7 @@ const Header = () => {
               }}
             >
               Start a Project
-            </Link>
+            </PrefetchLink>
           </div>
 
           {/* Mobile Menu Button */}
@@ -162,7 +163,7 @@ const Header = () => {
               { path: '/team', label: 'Team' },
               { path: '/contact', label: 'Contact' },
             ].map((item) => (
-              <Link
+              <PrefetchLink
                 key={item.path}
                 to={item.path}
                 className={`block py-3 px-4 text-lg font-medium transition-all duration-300 rounded-xl ${
@@ -179,10 +180,10 @@ const Header = () => {
                 }}
               >
                 {item.label}
-              </Link>
+              </PrefetchLink>
             ))}
             <div className="pt-4 px-4">
-              <Link
+              <PrefetchLink
                 to="/contact"
                 className="block w-full text-center py-3 px-6 text-white font-semibold rounded-full transition-all duration-300"
                 onClick={closeMobileMenu}
@@ -194,7 +195,7 @@ const Header = () => {
                 }}
               >
                 Start a Project
-              </Link>
+              </PrefetchLink>
             </div>
           </div>
         </nav>

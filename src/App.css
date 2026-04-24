@@ -515,44 +515,127 @@ main {
   flex: 1;
 }
 
+/* ═══════════════════════════════════════════
+   PAGE TRANSITIONS — Motion (AnimatePresence) driven
+   ═══════════════════════════════════════════ */
+
+/* Suspense fallback — subtle shimmer instead of blank flash.
+   Ideally this never shows because all routes are preloaded,
+   but it's here as a graceful fallback on the very first visit. */
 .page-loading {
-  min-height: 60vh;
-  background: transparent;
+  min-height: 70vh;
+  background:
+    linear-gradient(90deg,
+      transparent 0%,
+      rgba(170,140,255,0.06) 50%,
+      transparent 100%);
+  background-size: 200% 100%;
+  animation: pageLoadingShimmer 1.4s ease-in-out infinite;
+}
+@keyframes pageLoadingShimmer {
+  0%, 100% { background-position: 200% 0%; }
+  50%      { background-position: -200% 0%; }
 }
 
-.page-transition {
-  animation-duration: 0.4s;
-  animation-fill-mode: both;
+/* The wrapper applied to each motion.div page.
+   We only set GPU hints — Motion controls the actual transform/opacity
+   via inline styles, so no CSS transitions here (would conflict). */
+.page-motion {
+  min-height: 70vh;
+  transform-origin: center top;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* Trick the browser into compositing this on its own GPU layer */
+  transform: translate3d(0, 0, 0);
 }
 
-.page-transition.fadeIn {
-  animation-name: pageEnter;
+/* Top route-change progress bar */
+.route-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 100;
+  pointer-events: none;
+  overflow: hidden;
+}
+.route-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -35%;
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(170,140,255,0.3) 20%,
+    #a98fff 45%,
+    #ffffff 50%,
+    #a98fff 55%,
+    rgba(170,140,255,0.3) 80%,
+    transparent);
+  box-shadow:
+    0 0 10px rgba(170,140,255,0.8),
+    0 0 20px rgba(170,140,255,0.4);
+  animation: routeProgressSlide 0.95s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes routeProgressSlide {
+  0%   { left: -35%; }
+  100% { left: 100%; }
 }
 
-.page-transition.fadeOut {
-  animation-name: pageExit;
+/* Push progress bar below announcement bar when visible */
+body.has-announcement .route-progress { top: 42px; }
+@media (max-width: 640px) {
+  body.has-announcement .route-progress { top: 40px; }
 }
 
-@keyframes pageEnter {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Reduced motion — Motion respects prefers-reduced-motion internally,
+   but we still remove the progress-bar slide animation */
+@media (prefers-reduced-motion: reduce) {
+  .route-progress::after { animation: none; opacity: 0.4; }
 }
 
-@keyframes pageExit {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
+/* ═══════════════════════════════════════════
+   VIEW TRANSITIONS API (native browser layer)
+   When the browser supports it (Chrome/Edge/Safari TP, 85% coverage
+   in 2025), react-router-dom v7's viewTransition prop triggers
+   document.startViewTransition() — the browser snapshots the old
+   and new DOM and cross-fades them on the compositor thread.
+   ═══════════════════════════════════════════ */
+
+/* Root view transition — let our Motion animations drive, but keep
+   a graceful fallback duration if the browser fires the transition
+   before Motion takes over. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 260ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+::view-transition-old(root) {
+  animation-name: vtFadeOut;
+}
+::view-transition-new(root) {
+  animation-name: vtFadeIn;
+}
+@keyframes vtFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+@keyframes vtFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Keep the fixed chrome (header, announcement bar, floating button,
+   scroll-top) stable during the native cross-fade so they don't double-paint */
+header.fixed,
+.announcement-bar,
+.floating-contact,
+.floating-scroll-top,
+.route-progress {
+  view-transition-name: none;
 }
 
 /* ======================================
@@ -1106,4 +1189,291 @@ html {
   padding: var(--space-4);
   border-radius: var(--radius-lg);
   border: 1px solid #bbf7d0;
+}
+
+/* ═══════════════════════════════════════════
+   ANNOUNCEMENT BAR — top trust strip
+   ═══════════════════════════════════════════ */
+.announcement-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background:
+    linear-gradient(90deg, rgba(110,232,149,0.14) 0%, rgba(170,140,255,0.18) 50%, rgba(110,232,149,0.14) 100%);
+  border-bottom: 1px solid rgba(170,140,255,0.2);
+  animation: announcementShimmer 12s ease-in-out infinite;
+  background-size: 200% 100%;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Push the fixed header down below the announcement bar */
+body.has-announcement header.fixed {
+  top: 42px;
+}
+@media (max-width: 640px) {
+  body.has-announcement header.fixed { top: 40px; }
+}
+@keyframes announcementShimmer {
+  0%, 100% { background-position: 0% 0%; }
+  50%      { background-position: 100% 0%; }
+}
+.announcement-bar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  transition: opacity 0.2s ease;
+}
+.announcement-bar-link:hover { opacity: 0.85; }
+.announcement-bar-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6ee895;
+  box-shadow: 0 0 12px rgba(110,232,149,0.9);
+  animation: announcementPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes announcementPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.25); opacity: 0.8; }
+}
+.announcement-bar-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.announcement-bar-text strong {
+  font-weight: 600;
+  color: #ffffff;
+}
+.announcement-bar-sep {
+  color: rgba(255,255,255,0.35);
+}
+.announcement-bar-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #a98fff;
+  font-weight: 500;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.announcement-bar-link:hover .announcement-bar-cta {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+.announcement-bar-close {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.55);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.announcement-bar-close:hover {
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.06);
+}
+@media (max-width: 640px) {
+  .announcement-bar { padding: 9px 40px 9px 14px; font-size: 12px; }
+  .announcement-bar-link { font-size: 12px; gap: 8px; }
+  .announcement-bar-close { right: 10px; width: 22px; height: 22px; }
+}
+
+/* ═══════════════════════════════════════════
+   FLOATING CONTACT — always-available action
+   ═══════════════════════════════════════════ */
+.floating-contact {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+.floating-contact-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.floating-main-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px 12px 14px;
+  background: linear-gradient(135deg, #a98fff 0%, #7c5cff 100%);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  color: #100D25;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow:
+    0 10px 30px rgba(140,90,240,0.45),
+    0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  z-index: 2;
+}
+.floating-main-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow:
+    0 14px 40px rgba(170,140,255,0.55),
+    0 4px 10px rgba(0,0,0,0.2);
+}
+.floating-main-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.floating-main-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #14b85f;
+  box-shadow: 0 0 10px rgba(20,184,95,0.9);
+  animation: floatingDotPulse 2s ease-in-out infinite;
+}
+@keyframes floatingDotPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.35); }
+}
+.floating-main-icon-close {
+  width: 18px;
+  height: 18px;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.floating-main-icon-hidden {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+  width: 0;
+  margin: 0;
+}
+
+.floating-pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  border: 2px solid rgba(170,140,255,0.45);
+  animation: floatingPulseRing 2.6s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes floatingPulseRing {
+  0%   { transform: translate(-50%, -50%) scale(1);    opacity: 0.7; }
+  100% { transform: translate(-50%, -50%) scale(1.45); opacity: 0; }
+}
+.floating-contact-expanded .floating-pulse-ring {
+  animation: none;
+  opacity: 0;
+}
+
+.floating-options {
+  position: absolute;
+  bottom: 58px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.floating-options-show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.floating-option {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background: rgba(20, 16, 46, 0.92);
+  border: 1px solid rgba(170,140,255,0.28);
+  border-radius: 50%;
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+.floating-option:hover {
+  transform: scale(1.1);
+  background: rgba(170,140,255,0.18);
+  border-color: rgba(170,140,255,0.55);
+}
+.floating-option-whatsapp { color: #25D366; }
+.floating-option-calendar { color: #a98fff; }
+
+.floating-scroll-top {
+  position: fixed;
+  bottom: 26px;
+  left: 24px;
+  z-index: 50;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 16, 46, 0.8);
+  border: 1px solid rgba(170,140,255,0.28);
+  border-radius: 50%;
+  color: rgba(255,255,255,0.75);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  pointer-events: none;
+}
+.floating-scroll-top-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.floating-scroll-top:hover {
+  color: #a98fff;
+  border-color: rgba(170,140,255,0.55);
+  background: rgba(170,140,255,0.14);
+}
+
+@media (max-width: 640px) {
+  .floating-contact { bottom: 16px; right: 16px; }
+  .floating-main-btn { padding: 10px 16px 10px 12px; font-size: 12px; }
+  .floating-scroll-top { bottom: 16px; left: 16px; width: 38px; height: 38px; }
 }
