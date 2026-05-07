@@ -225,7 +225,7 @@ const Contact = () => {
                     <div>
                       <p className="contact-detail-label">Based in</p>
                       <p className="contact-detail-value">
-                        Lahore, Pakistan · building for 12 countries
+                        Islamabad, Pakistan · building for 12 countries
                       </p>
                     </div>
                   </div>

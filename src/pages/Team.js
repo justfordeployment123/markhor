@@ -8,57 +8,14 @@ import './Home.css';
 const TEAM = [
   {
     id: 1,
-    name: 'Alex Morgan',
-    role: 'CEO · Founding Engineer',
-    years: '12 yrs',
-    bio: 'Co-founder. Ex-ex-Enterprise-Java who quit to ship smaller, better things. Now picks up the phone when clients call on a Friday at 9 pm.',
-    skills: ['Product Strategy', 'Team Leadership', 'Client Partnerships'],
-    shipped: '14+ products shipped',
-  },
-  {
-    id: 2,
-    name: 'Sarah Kim',
-    role: 'CTO · Architecture Lead',
-    years: '11 yrs',
-    bio: 'Backend and distributed systems. Wrote most of the internal infra. Reviews every architecture decision above a certain blast radius.',
-    skills: ['Distributed Systems', 'AWS / GCP', 'API Design'],
-    shipped: '30+ systems in prod',
-  },
-  {
-    id: 3,
-    name: 'Michael Chen',
-    role: 'Lead iOS / Android',
-    years: '9 yrs',
-    bio: 'Ex-fintech mobile lead. Obsessive about crash-free rates and launch-day readiness. Has shipped apps to 12 App Stores and 6 Play Store regions.',
-    skills: ['Swift', 'Kotlin', 'React Native'],
-    shipped: '18 apps on stores',
-  },
-  {
-    id: 4,
-    name: 'Emily Rodriguez',
-    role: 'Lead Web Engineer',
-    years: '8 yrs',
-    bio: 'React / Next.js specialist. Built the first three NovaPay dashboards. Has opinions about form validation that you will eventually thank her for.',
-    skills: ['React', 'Next.js', 'TypeScript'],
-    shipped: '22 web apps live',
-  },
-  {
-    id: 5,
-    name: 'David Park',
-    role: 'AI / ML Engineer',
-    years: '7 yrs',
-    bio: 'Built our first LLM pipeline in 2021 before it was cool. Now specialises in HIPAA-scoped AI and production RAG. Hates demos that don\'t generalise.',
-    skills: ['PyTorch', 'OpenAI', 'LangChain', 'RAG'],
-    shipped: '9 AI systems in prod',
-  },
-  {
-    id: 6,
-    name: 'Lisa Anderson',
-    role: 'Lead Product Designer',
-    years: '10 yrs',
-    bio: 'Figma-to-production, end to end. Designs interfaces engineers can actually build — and users actually use. Runs our user research loop.',
-    skills: ['UI Design', 'UX Research', 'Design Systems'],
-    shipped: '40+ interfaces',
+    name: 'Muhammad Fizan Tariq',
+    role: 'Full-Stack Engineer',
+    years: '3 yrs',
+    bio: 'Builds end-to-end web platforms and AI-powered products — from architecture to deployment. Has shipped real estate, e-commerce, edtech, and SaaS platforms for clients across the UK and UAE.',
+    skills: ['React', 'Next.js', 'Node.js', 'Docker', 'AI Integration'],
+    shipped: '7+ products live',
+    phone: '+92 346 5833438',
+    photo: '/Faizan.jpg',
   },
 ];
 
@@ -86,9 +43,9 @@ const CULTURE = [
 ];
 
 const HIRING = [
-  { role: 'Senior Full-Stack Engineer', type: 'Full-time · Lahore', status: 'Open' },
-  { role: 'Senior Mobile Engineer (iOS)', type: 'Full-time · Lahore', status: 'Open' },
-  { role: 'Product Designer', type: 'Full-time · Lahore / Remote', status: 'Open' },
+  { role: 'Senior Full-Stack Engineer', type: 'Full-time · Islamabad', status: 'Open' },
+  { role: 'Senior Mobile Engineer (iOS)', type: 'Full-time · Islamabad', status: 'Open' },
+  { role: 'Product Designer', type: 'Full-time · Islamabad / Remote', status: 'Open' },
 ];
 
 const Team = () => {
@@ -111,16 +68,16 @@ const Team = () => {
             </RevealOnScroll>
             <RevealOnScroll animation="fadeUp" delay={100} immediate>
               <h1 className="hero-title">
-                Twelve seniors.
-                <span className="hero-title-accent"> One very small room.</span>
+                Senior engineer.
+                <span className="hero-title-accent"> Ships end-to-end.</span>
               </h1>
             </RevealOnScroll>
             <RevealOnScroll animation="fadeUp" delay={180} immediate>
               <p className="hero-lead">
-                The engineer who sells you the project builds the project.
-                No account managers, no offshore re-routing, no "we'll assign
-                someone from our Manila office." Just the people below —
-                all on the same floor in Lahore.
+                The engineer who scopes your project builds your project.
+                No account managers, no bait-and-switch, no offshore re-routing.
+                Just Fizan — full-stack, Lahore-based, available to meet on a call
+                before you sign a thing.
               </p>
             </RevealOnScroll>
             <RevealOnScroll animation="fadeUp" delay={260} immediate>
@@ -141,9 +98,9 @@ const Team = () => {
           <RevealOnScroll animation="fadeUp" delay={300} immediate>
             <div className="hero-trust">
               {[
-                { val: '12',    label: 'Senior engineers' },
-                { val: '7+ yrs', label: 'Avg experience' },
-                { val: '0',     label: 'Juniors on your project' },
+                { val: '3 yrs', label: 'Experience' },
+                { val: '7+',    label: 'Products shipped' },
+                { val: '0',     label: 'Middlemen' },
                 { val: '100%',  label: 'In-house · no subs' },
               ].map((s, i) => (
                 <div key={i} className="trust-stat">
@@ -169,13 +126,13 @@ const Team = () => {
                 <span>The People</span>
               </span>
               <h2 className="section-title">
-                Meet the engineers
+                Meet the engineer
                 <span className="section-title-accent"> who'll build your product.</span>
               </h2>
               <p className="section-lead">
-                Not a hired sales team. Not a marketplace. The team below is who
-                you'll meet on the intro call — and the same team who'll ship
-                the work from kickoff to launch.
+                Not a sales team, not a marketplace. Fizan is who you meet on the
+                intro call — and the same person who ships your product from
+                kickoff to launch.
               </p>
             </div>
           </RevealOnScroll>
@@ -187,9 +144,10 @@ const Team = () => {
                   <div className="team-media">
                     <div className="team-media-grid" />
                     <div className="team-media-glow" />
-                    <span className="team-initials">
-                      {m.name.split(' ').map((n) => n[0]).join('')}
-                    </span>
+                    {m.photo
+                      ? <img src={m.photo} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit', display: 'block' }} />
+                      : <span className="team-initials">{m.name.split(' ').map((n) => n[0]).join('')}</span>
+                    }
                     <span className="team-online" aria-hidden="true">
                       <span className="team-online-dot" />
                       {m.years}
@@ -208,6 +166,12 @@ const Team = () => {
                       <span className="team-shipped-dot" />
                       {m.shipped}
                     </div>
+                    {m.phone && (
+                      <a href={`tel:${m.phone.replace(/\s/g, '')}`} className="team-shipped" style={{ marginTop: 8, textDecoration: 'none' }}>
+                        <span className="team-shipped-dot" />
+                        {m.phone}
+                      </a>
+                    )}
                   </div>
                 </article>
               </RevealOnScroll>
@@ -269,12 +233,12 @@ const Team = () => {
 
                 <div className="culture-pulse">
                   <div className="culture-pulse-item">
-                    <span className="culture-pulse-val">4</span>
-                    <span className="culture-pulse-key">focus days / week</span>
+                    <span className="culture-pulse-val">7+</span>
+                    <span className="culture-pulse-key">products shipped</span>
                   </div>
                   <div className="culture-pulse-item">
-                    <span className="culture-pulse-val">100%</span>
-                    <span className="culture-pulse-key">of hires are seniors</span>
+                    <span className="culture-pulse-val">3</span>
+                    <span className="culture-pulse-key">years of experience</span>
                   </div>
                   <div className="culture-pulse-item">
                     <span className="culture-pulse-val">0</span>
@@ -317,7 +281,7 @@ const Team = () => {
               </h2>
               <p className="howwe-lead">
                 We grow slowly on purpose. Three roles below — in-person in
-                Lahore, or a hybrid / remote setup for the right designer.
+                Islamabad, or a hybrid / remote setup for the right designer.
                 Send a project you've shipped, not a CV.
               </p>
             </div>

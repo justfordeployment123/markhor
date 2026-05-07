@@ -11,8 +11,8 @@ const FAQS = [
     a: 'Our sweet spot is $35K–$90K for a production-ready MVP, depending on scope and platforms. A simple mobile app with a clean backend sits near the bottom. A complex AI pipeline with multiple integrations sits near the top. We always start with a fixed-price 1-week discovery sprint so you get a real number and a real plan before committing to the full build. Monthly retainers for post-launch work start at a per-engineer rate we\'ll quote on the call.',
   },
   {
-    q: 'How does the timezone thing actually work from Lahore?',
-    a: 'Lahore overlaps a full workday with London, 4–5 hours with New York, and late afternoons with San Francisco. One live standup a day at your timezone (we flex, not you), daily async updates on Slack, and a weekly Loom demo every Friday. Our Slack response SLA during business hours is under 2 hours — usually under 30 minutes. Most US clients say the overnight overlap is a feature, not a bug: problems you surface at 5 pm are often solved by breakfast.',
+    q: 'How does the timezone thing actually work from Islamabad?',
+    a: 'Islamabad overlaps a full workday with London, 4–5 hours with New York, and late afternoons with San Francisco. One live standup a day at your timezone (we flex, not you), daily async updates on Slack, and a weekly Loom demo every Friday. Our Slack response SLA during business hours is under 2 hours — usually under 30 minutes. Most US clients say the overnight overlap is a feature, not a bug: problems you surface at 5 pm are often solved by breakfast.',
   },
   {
     q: 'What if my team is three engineers who need help, not a full studio?',

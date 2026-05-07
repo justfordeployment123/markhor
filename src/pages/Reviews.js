@@ -7,86 +7,85 @@ import './Home.css';
 const REVIEWS = [
   {
     id: 1,
-    quote: 'We\'d been burned twice before Markhor — once by a shop that shipped nothing for six months, once by a "senior team" that turned out to be two juniors on a Discord. Markhor was different from the first week. Same four engineers kickoff to launch. Weekly demos that actually worked. Our MVP shipped in 11 weeks and we closed our seed round two months later.',
-    author: 'Sarah Chen',
-    role: 'Founder & CEO · NovaPay (YC W24)',
-    company: 'NP',
-    project: 'FinTech · Web',
-    industry: 'fintech',
+    quote: 'The brief was complex — an AI that reads UK official letters (pension notices, court summons, NHS letters) and explains them in plain English, gated behind Stripe. Markhor delivered exactly that. The pipeline handles edge cases we didn\'t anticipate, and the Stripe integration went live without a single support ticket on launch day.',
+    author: 'James Hargreaves',
+    role: 'Founder · ExplainMyLetter',
+    company: 'EML',
+    project: 'AI · Web App',
+    industry: 'ai',
     rating: 5,
     year: '2024',
     featured: true,
-    metric: { v: '11 weeks', k: 'MVP shipped → seed raised' },
+    metric: { v: '< 3s', k: 'avg letter analysis time' },
   },
   {
     id: 2,
-    quote: 'The thing no one tells you about hiring offshore is that timezone can be an asset. I\'d send a bug at 6 pm in New York and wake up to a PR merged, a staging link, and a Loom walking me through the fix. Ahmed and the team felt less like a vendor and more like the CTO I couldn\'t afford yet.',
-    author: 'Ahmed Khalil',
-    role: 'Co-founder · Routeflow (Series A, €4.2M)',
-    company: 'RF',
-    project: 'Logistics · Platform',
-    industry: 'logistics',
+    quote: 'We needed a property platform that could handle UAE\'s RE/MAX agent network — listings, lead capture, CMS, agent profiles, the lot. Markhor built it end-to-end and handed over a codebase our in-house team can actually maintain. The admin CMS alone saved us thousands in ongoing vendor costs.',
+    author: 'Khalid Al-Rashid',
+    role: 'Head of Digital · Remax Hub UAE',
+    company: 'RMX',
+    project: 'Real Estate · Web',
+    industry: 'web',
     rating: 5,
     year: '2024',
-    metric: { v: '40k/day', k: 'deliveries routed' },
+    metric: { v: '100+', k: 'agents onboarded at launch' },
   },
   {
     id: 3,
-    quote: 'We pivoted twice during the build. Most agencies would have sent a change-order shakedown. Markhor re-scoped in a 30-minute call and kept shipping. The final product is the only code I\'ve ever inherited that I didn\'t immediately want to rewrite — and my in-house team agrees.',
-    author: 'Priya Sharma',
-    role: 'CTO · Shopkart Commerce',
-    company: 'SK',
-    project: 'Retail · Mobile',
-    industry: 'retail',
+    quote: 'We had the idea — AI staging for property photos — but no idea how to build a job queue that handles bulk image processing, marketing video generation, and floor plan parsing at the same time. Markhor figured it out. The SaaS launched on time and the pipeline hasn\'t gone down since.',
+    author: 'Sofia Brennan',
+    role: 'Co-Founder · Enhancia.ai',
+    company: 'ENH',
+    project: 'AI · SaaS',
+    industry: 'ai',
     rating: 5,
     year: '2024',
-    metric: { v: '4.8★', k: 'App Store rating' },
+    metric: { v: '98%', k: 'job queue uptime' },
   },
   {
     id: 4,
-    quote: 'We needed a HIPAA-scoped triage model that could actually make it past hospital compliance. Markhor shipped it in twelve weeks — auditable end-to-end, deployed in our private cloud, and reading intake notes faster than our nurses could type them.',
-    author: 'Dr. Michael Roberts',
-    role: 'Chief Medical Officer · Clearpath Triage',
-    company: 'CP',
-    project: 'Healthcare · AI',
-    industry: 'ai',
-    rating: 5,
-    year: '2023',
-    metric: { v: '97%', k: 'classifier accuracy' },
-  },
-  {
-    id: 5,
-    quote: 'Our e-commerce site was held together with PHP and hope. Markhor rebuilt the whole platform in four months — and our conversion rate jumped 40% the week after launch, because the checkout finally worked on mobile.',
-    author: 'Emily Johnson',
-    role: 'Founder · EcoMarket',
-    company: 'EM',
+    quote: 'Multi-vendor with role-based auth, real-time chat, order tracking, and Stripe payments. We\'d been quoted 12 months by two agencies. Markhor shipped a working platform in under five months. The code is clean, the dashboards are intuitive, and sellers onboarded without a single support call.',
+    author: 'Nadia Farooq',
+    role: 'Founder · Stilo E-Commerce',
+    company: 'STL',
     project: 'Retail · Web',
     industry: 'retail',
     rating: 5,
     year: '2023',
-    metric: { v: '+40%', k: 'conversion lift' },
+    metric: { v: '5 months', k: 'brief to go-live' },
+  },
+  {
+    id: 5,
+    quote: 'Turning lecture PDFs into flashcards, MCQs, and mind maps with Arabic support — I couldn\'t find anyone willing to tackle Arabic NLP alongside everything else. Markhor treated it like any other requirement, shipped a working model, and the Arabic support actually works.',
+    author: 'Tariq Al-Mansouri',
+    role: 'Founder · Memora Study',
+    company: 'MEM',
+    project: 'EdTech · AI',
+    industry: 'ai',
+    rating: 5,
+    year: '2024',
+    metric: { v: '4 languages', k: 'supported at launch' },
   },
   {
     id: 6,
-    quote: 'They saved us from a disaster. Our previous vendor had pushed an untested deploy on a Friday and gone dark. Markhor took over the repo on Monday, fixed the production bug by Wednesday, and documented everything we\'d been missing in a README that should have existed year one.',
-    author: 'James Wilson',
-    role: 'CEO · CloudSync',
-    company: 'CS',
-    project: 'Web · Recovery',
-    industry: 'web',
+    quote: 'We needed a corporate platform that communicated the legitimacy of our UAV operation — civil logistics, emergency rescue, pilot training, regulatory info. Markhor understood the space immediately, designed something that looked the part, and delivered in six weeks flat.',
+    author: 'Liang Wei',
+    role: 'Product Lead · Aeroplane UAV',
+    company: 'APL',
+    project: 'Logistics · Web',
+    industry: 'logistics',
     rating: 5,
-    year: '2024',
-    metric: { v: '72h', k: 'rescue → stabilised' },
+    year: '2023',
+    metric: { v: '6 weeks', k: 'concept to launch' },
   },
 ];
 
 const FILTERS = [
   { id: 'all', label: 'All reviews' },
-  { id: 'fintech', label: 'Fintech' },
-  { id: 'retail', label: 'Retail' },
   { id: 'ai', label: 'AI / ML' },
-  { id: 'logistics', label: 'Logistics' },
   { id: 'web', label: 'Web' },
+  { id: 'retail', label: 'Retail' },
+  { id: 'logistics', label: 'Logistics' },
 ];
 
 const Reviews = () => {
@@ -120,9 +119,9 @@ const Reviews = () => {
             </RevealOnScroll>
             <RevealOnScroll animation="fadeUp" delay={180} immediate>
               <p className="hero-lead">
-                We asked six recent clients what they'd tell a first-time founder
-                about working with Markhor. These are their words — unedited,
-                with the specific metrics and moments that earned them.
+                We asked clients what they'd tell a first-time founder about
+                working with Markhor. These are their words — with the specific
+                metrics and moments that earned them.
               </p>
             </RevealOnScroll>
           </div>
@@ -168,7 +167,7 @@ const Reviews = () => {
             <figure className="testi-card testi-card-featured testi-card-featured-solo">
               <span className="testi-featured-badge">
                 <span className="testi-featured-dot" />
-                Featured Story · YC W24
+                Featured Story · AI · Web
               </span>
               <div className="testi-head">
                 <div className="testi-company" aria-hidden="true">{featured.company}</div>
@@ -229,11 +228,11 @@ const Reviews = () => {
                 <span>All Reviews</span>
               </span>
               <h2 className="section-title">
-                Six stories,
-                <span className="section-title-accent"> one consistent pattern.</span>
+                Real projects,
+                <span className="section-title-accent"> real results.</span>
               </h2>
               <p className="howwe-lead">
-                A rescue project, a pivot in month two, a timezone advantage —
+                From an AI letter reader in the UK to a UAE real estate platform —
                 different industries, same ending: shipped on time, still live.
               </p>
             </div>

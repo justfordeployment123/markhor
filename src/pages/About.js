@@ -43,40 +43,28 @@ const VALUES = [
 
 const MILESTONES = [
   {
-    year: '2019',
-    title: 'Three engineers, one small idea',
-    desc: 'Markhor starts in a shared office in Gulberg — three engineers who\'d quit better-paying jobs to build products that mattered more.',
-    stat: '3 founders',
-  },
-  {
-    year: '2020',
-    title: 'First six-figure project',
-    desc: 'We ship a mobile app for a Series A fintech — on time, under budget. They refer us to two more founders in the same accelerator.',
-    stat: '4.9★ App Store',
-  },
-  {
-    year: '2021',
-    title: 'AI practice opens',
-    desc: 'We ship our first production ML pipeline — a HIPAA-scoped triage model that classifies patient intake in under three seconds.',
-    stat: '97% accuracy',
-  },
-  {
-    year: '2022',
-    title: '30 products shipped across three continents',
-    desc: 'From a logistics platform in Berlin to a retail app in São Paulo. Every one of them still live, still updating.',
-    stat: '3 continents',
+    year: '2023',
+    title: 'One engineer, one clear idea',
+    desc: 'Markhor launches in Lahore — a solo full-stack studio focused on shipping real products for early-stage founders, not wireframes and retainers.',
+    stat: '1 founder',
   },
   {
     year: '2023',
-    title: 'The team crosses a dozen',
-    desc: 'Twelve senior engineers — all hired, zero contracted. Flat structure. Weekly architecture reviews. No middle management, ever.',
-    stat: '12 seniors',
+    title: 'First international client',
+    desc: 'Remax Hub goes live — a full property platform for UAE\'s RE/MAX network. Built end-to-end, handed over with full documentation on day one.',
+    stat: 'UAE · live',
   },
   {
     year: '2024',
-    title: 'A very quiet year of compounding',
-    desc: 'No rebrand. No Series A of our own. Just seventeen new products shipped — and the first client we built with in 2019 renewed again.',
-    stat: '50+ shipped',
+    title: 'AI practice opens',
+    desc: 'ExplainMyLetter ships — an AI pipeline that reads UK official letters and explains them in plain English. Stripe-gated, zero support tickets on launch day.',
+    stat: '< 3s analysis',
+  },
+  {
+    year: '2024',
+    title: '7 live products across 3 industries',
+    desc: 'From AI SaaS to e-commerce to UAV platforms — every product still live, still updating, and still used by real customers.',
+    stat: '7+ shipped',
   },
 ];
 
@@ -108,9 +96,9 @@ const About = () => {
               </RevealOnScroll>
               <RevealOnScroll animation="fadeUp" delay={180} immediate>
                 <p className="hero-lead">
-                  Markhor is a small, senior product studio in Lahore.
-                  Since 2019, we've shipped 50+ products for founders in
-                  12 countries — quietly, on time, without the agency theatre.
+                  Markhor is a boutique product studio in Lahore.
+                  Since 2023, we've shipped 7+ products for founders in
+                  the UK, UAE, and beyond — quietly, on time, without the agency theatre.
                 </p>
               </RevealOnScroll>
               <RevealOnScroll animation="fadeUp" delay={260} immediate>
@@ -149,7 +137,7 @@ const About = () => {
                     decoding="async"
                   />
                 </div>
-                <span className="hero-visual-badge">EST · 2019</span>
+                <span className="hero-visual-badge">EST · 2023</span>
 
                 <div className="hero-orbits" aria-hidden="true">
                   <span className="hero-orb hero-orb-1"><span className="hero-orb-dot" />React</span>
@@ -166,10 +154,10 @@ const About = () => {
           <RevealOnScroll animation="fadeUp" delay={400} immediate>
             <div className="hero-trust">
               {[
-                { val: '50+',   label: 'Products shipped' },
-                { val: '12',    label: 'Countries served' },
-                { val: '7 yrs', label: 'Climbing together' },
-                { val: '4.9★',  label: 'Avg App Store' },
+                { val: '7+',    label: 'Products shipped' },
+                { val: '3',     label: 'Countries served' },
+                { val: '3 yrs', label: 'Climbing together' },
+                { val: '100%',  label: 'Code ownership' },
               ].map((s, i) => (
                 <div key={i} className="trust-stat">
                   <span className="trust-stat-val">{s.val}</span>
@@ -200,22 +188,20 @@ const About = () => {
                   <span className="section-title-accent"> a better bet.</span>
                 </h2>
                 <p className="about-text" style={{ marginTop: 24 }}>
-                  Markhor started the way most studios don't — three engineers
-                  who'd quit better-paying jobs at larger firms because we
-                  were tired of watching good founders get sold "senior teams"
-                  and delivered juniors on a Discord.
+                  Markhor started the way most studios don't — a senior engineer
+                  who'd worked inside larger firms and was tired of watching good
+                  founders get sold "senior teams" and delivered juniors on a Discord.
                 </p>
                 <p className="about-text">
                   We're named after Pakistan's national animal — a mountain goat
                   that climbs where others can't. It's an on-the-nose metaphor
                   for the work we take on: the technical climbs that early-stage
-                  founders can't staff for, done by a team small enough to still
+                  founders can't staff for, done by someone small enough to still
                   care who the client is.
                 </p>
                 <p className="about-text">
-                  Seven years later, the company has grown to twelve seniors —
-                  all hired, zero contracted — shipping from Lahore to 12 countries.
-                  Same four founding engineers, same office, same principles.
+                  Two years in, 7+ products live across the UK, UAE, and beyond.
+                  Same founding engineer, same Lahore office, same principles.
                   We've turned away more work than we've taken. That part isn't
                   changing.
                 </p>
@@ -270,7 +256,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* WHY LAHORE — timezone as feature */}
+      {/* WHY Lahore — timezone as feature */}
       <section className="studio">
         <div className="studio-bg-grid" aria-hidden="true" />
         <div className="studio-bg-glow" aria-hidden="true" />
@@ -378,7 +364,7 @@ const About = () => {
         status="Accepting 2 new projects · Q3 2026"
         title="Your next product."
         titleAccent="Our next Monday."
-        lead="You've got an idea, a deadline, or a pile of legacy code you've stopped enjoying. We've got 12 senior engineers and a Monday morning that's wide open."
+        lead="You've got an idea, a deadline, or a pile of legacy code you've stopped enjoying. We've got a senior full-stack engineer and a Monday morning that's wide open."
         bullets={[
           '30-minute call — no pitch deck required',
           'NDA on request, before the first call',

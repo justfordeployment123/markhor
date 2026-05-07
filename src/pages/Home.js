@@ -36,28 +36,53 @@ const SERVICES = [
 
 const WORK = [
   {
-    cat: 'FinTech · Web App',
-    title: 'NovaPay Dashboard',
+    cat: 'AI · Web App',
+    title: 'ExplainMyLetter',
     year: '2024',
-    oneliner: 'The treasury dashboard that cut month-end close from 9 days to 1.',
+    href: 'https://test.explainmyletter.co.uk/',
+    oneliner: 'AI platform that reads complex UK official letters and delivers plain-English explanations, gated behind Stripe.',
   },
   {
-    cat: 'Retail · Mobile',
-    title: 'Shopkart Commerce',
+    cat: 'Real Estate · Web',
+    title: 'Remax Hub',
     year: '2024',
-    oneliner: 'A shopping app that hit 50K downloads before we shipped v2.',
+    href: 'https://remaxhub.ae/',
+    oneliner: 'Full-stack property platform for UAE\'s RE/MAX network — listings, lead capture, agent profiles, and a rich-text admin CMS.',
   },
   {
-    cat: 'Healthcare · AI',
-    title: 'Clearpath Triage',
-    year: '2023',
-    oneliner: 'The triage AI that reads intake notes as fast as a nurse can type them.',
+    cat: 'AI · SaaS',
+    title: 'Enhancia.ai',
+    year: '2024',
+    href: 'https://enhancia.ai/',
+    oneliner: 'AI SaaS that auto-stages property photos, generates marketing videos, and processes floor plans through a job queue.',
   },
   {
-    cat: 'Logistics · Platform',
-    title: 'Routeflow OS',
+    cat: 'Retail · Web',
+    title: 'Stilo E-Commerce',
     year: '2023',
-    oneliner: 'The dispatcher platform that routes 40,000 deliveries a day.',
+    href: 'http://xs8ssw0g0cssscw8scowwkwg.72.60.29.89.sslip.io',
+    oneliner: 'Multi-vendor platform with role-based auth, real-time chat, order tracking, and Stripe payments.',
+  },
+  {
+    cat: 'EdTech · AI',
+    title: 'Memora Study',
+    year: '2024',
+    href: 'https://memora-study.com/',
+    oneliner: 'Smart study platform that converts lectures and PDFs into AI-generated flashcards, MCQs, and mind maps with Arabic support.',
+  },
+  {
+    cat: 'Accessibility · Web',
+    title: 'SilverSurfers.ai',
+    year: '2024',
+    href: 'https://silversurfers.ai',
+    oneliner: 'Accessibility score calculator that evaluates website usability for elderly users and scores digital inclusivity in real time.',
+  },
+  {
+    cat: 'Logistics · Web',
+    title: 'Aeroplane UAV',
+    year: '2023',
+    href: 'http://g0kskg4c8cssko0skskkc0ok.72.60.29.89.sslip.io',
+    oneliner: 'Corporate UAV platform presenting drone services across civil logistics, emergency rescue, and low-altitude economy.',
   },
 ];
 
@@ -169,7 +194,7 @@ const Home = () => {
               <RevealOnScroll animation="fadeUp" delay={0} immediate>
                 <div className="eyebrow">
                   <span className="eyebrow-dot" />
-                  <span>Senior Product Studio · Lahore</span>
+                  <span>Senior Product Studio · Islamabad</span>
                 </div>
               </RevealOnScroll>
 
@@ -182,7 +207,7 @@ const Home = () => {
 
               <RevealOnScroll animation="fadeUp" delay={180} immediate>
                 <p className="hero-lead">
-                  We're Markhor Systems, a senior product studio in Lahore building
+                  We're Markhor Systems, a senior product studio in Islamabad building
                   mobile, web, and AI products for early-stage founders in
                   12+ countries. Fixed scope. Weekly demos. Code you own from day one.
                 </p>
@@ -258,7 +283,7 @@ const Home = () => {
                     decoding="async"
                   />
                 </div>
-                <span className="hero-visual-badge">EST · 2019</span>
+                <span className="hero-visual-badge">EST · 2023</span>
 
                 {/* Orbital tech badges */}
                 <div className="hero-orbits" aria-hidden="true">
@@ -296,7 +321,7 @@ const Home = () => {
             <div className="hero-trust">
               {[
                 { val: '50+',   label: 'Projects Shipped', meta: 'scale' },
-                { val: '7 yrs', label: 'Since 2019',       meta: 'scale' },
+                { val: '3 yrs', label: 'Since 2023',       meta: 'scale' },
                 { val: '< 24h', label: 'First Reply',      meta: 'promise' },
                 { val: '100%',  label: 'Code is Yours',    meta: 'promise' },
               ].map((s, i) => (
@@ -414,18 +439,16 @@ const Home = () => {
                   <span>About the Studio</span>
                 </span>
                 <h2 className="studio-title">
-                  Born in Lahore.
+                  Born in Islamabad.
                   <br />
                   <span className="studio-title-accent">Built for the world.</span>
                 </h2>
                 <p className="studio-lead">
-                  Markhor started in 2019 with a small idea: early-stage founders
-                  deserve the same senior engineering talent Google hires —
-                  without the Google price tag or the offshore horror stories.
-                  Seven years later, a team of 12 seniors has shipped{' '}
-                  <strong>50+ products for founders in 12 countries</strong>,
-                  from fintech dashboards in San Francisco to healthcare
-                  platforms in Berlin.
+                  Markhor started in 2023 with a simple idea: founders deserve
+                  senior engineering talent without the agency markup or the
+                  offshore horror stories. In two years we've shipped{' '}
+                  <strong>7+ live products for clients in the UK, UAE, and beyond</strong>,
+                  from AI platforms to full-stack SaaS.
                 </p>
                 <p className="studio-lead">
                   We're named after Pakistan's national animal — a mountain goat
@@ -470,11 +493,11 @@ const Home = () => {
                 </div>
 
                 <span className="medallion-orbit medallion-orbit-1">
-                  <span className="medallion-orbit-val">7</span>
+                  <span className="medallion-orbit-val">3</span>
                   <span className="medallion-orbit-key">YEARS</span>
                 </span>
                 <span className="medallion-orbit medallion-orbit-2">
-                  <span className="medallion-orbit-val">30+</span>
+                  <span className="medallion-orbit-val">10+</span>
                   <span className="medallion-orbit-key">CLIENTS</span>
                 </span>
                 <span className="medallion-orbit medallion-orbit-3">
@@ -503,8 +526,8 @@ const Home = () => {
                 Every early-stage founder we meet has been burned before —
                 by an agency that sold seniors and delivered juniors,
                 by a scope that tripled, by a team that went dark at launch.
-                These four principles exist because we've spent seven years
-                fixing other people's messes. Here's how we do it differently.
+                These principles exist because we've spent years fixing other
+                people's messes. Here's how we do it differently.
               </p>
             </RevealOnScroll>
           </div>
@@ -699,9 +722,8 @@ const Home = () => {
                   <span className="section-title-accent"> work.</span>
                 </h2>
                 <p className="section-lead" style={{ marginTop: 16 }}>
-                  Four products from the last two years. Different industries,
-                  different tech, one thing in common: each one shipped to
-                  real users — not a demo reel.
+                  Seven live products. Different industries, different tech,
+                  one thing in common: each one shipped to real users — not a demo reel.
                 </p>
               </div>
               <Link to="/services" className="btn btn-ghost">
@@ -716,7 +738,7 @@ const Home = () => {
           <div className="work-grid">
             {WORK.map((w, i) => (
               <RevealOnScroll key={i} animation="fadeUp" delay={i * 80}>
-                <Link to="/services" className="work-card">
+                <a href={w.href} target="_blank" rel="noopener noreferrer" className="work-card">
                   <div className="work-card-visual">
                     <div className="work-card-visual-grid" />
                     <div className="work-card-visual-glow" />
@@ -742,7 +764,7 @@ const Home = () => {
                       </span>
                     </div>
                   </div>
-                </Link>
+                </a>
               </RevealOnScroll>
             ))}
           </div>
@@ -830,7 +852,7 @@ const Home = () => {
                 </h2>
                 <p className="cta-lead">
                   You've got an idea, a deadline, or a pile of legacy code you've
-                  stopped enjoying. We've got 12 senior engineers, seven years
+                  stopped enjoying. We've got a senior full-stack engineer, 3 years
                   of shipping experience, and a Monday morning that's wide open.
                 </p>
                 <p className="cta-lead" style={{ marginTop: 12 }}>
