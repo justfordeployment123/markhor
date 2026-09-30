@@ -1,3 +1,15 @@
+# Current portfolio thumbnails — 2026-09-30
+
+All ten projects now use the `*-v2.webp` and `*-v2-640.webp` assets generated with the built-in imagegen tool. These are illustrative editorial device mockups based on project descriptions, not exact screenshots or real photographs. Original assets are retained below for history.
+
+The main and small variants are 1280 and 640 pixels wide, encoded at WebP quality 86 and 82. Existing responsive loading and 8:5 card crops are preserved. The full final prompt set is saved in [thumbnail-prompts-v2.json](thumbnail-prompts-v2.json).
+
+Projects: ExplainMyLetter, Remax Hub, Enhancia.ai, Recruit Myself, OraFile, Le Journal, Caviendoo, Stilo E-Commerce, Memora Study, SilverSurfers.ai.
+
+---
+
+## Previous asset history
+
 # Portfolio thumbnails
 
 Generated with the built-in imagegen tool using screenshots of the corresponding public homepages as visual references. These are generated editorial device mockups, not photographs of the clients' offices or equipment.
@@ -9,6 +21,13 @@ Captured and generated on 2026-09-29. Runtime assets are local WebP files; the s
 | ExplainMyLetter | https://explainmyletter.co.uk/ | `explainmyletter.webp` | `explainmyletter-640.webp` |
 | Enhancia | https://enhancia.ai/ | `enhancia.webp` | `enhancia-640.webp` |
 | RE/MAX Hub | https://remaxhub.ae/ | `remax-hub.webp` | `remax-hub-640.webp` |
+
+| Recruit Myself | https://recruitmyself.com/ | `recruitmyself.webp` | `recruitmyself-640.webp` |
+| OraFile | https://app.orafile.com/ | `orafile.webp` | `orafile-640.webp` |
+| Le Journal | https://lejournal.healthbouk.com/ | `lejournal.webp` | `lejournal-640.webp` |
+| Caviendoo | https://www.caviendoo.com/ | `caviendoo.webp` | `caviendoo-640.webp` |
+
+The last four are not generated photographs. They are HTML device mockups rendered on 2026-09-30: a live desktop capture (1440×900) in a browser frame and a live mobile capture (390×844) in a phone frame, over a gradient tinted to each brand, rendered at 2× and downscaled. Floating chat widgets were hidden before capture.
 
 Main variants are 1280 pixels wide; small variants are 640 pixels wide. Encoded with cwebp quality 88 and 84 respectively. Cards use an 8:5 crop, responsive srcset, lazy loading, and asynchronous decoding. Full-resolution generation originals remain in the imagegen output directory.
 

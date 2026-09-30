@@ -276,7 +276,6 @@
 .mk-symbol-orbit::after { content: ''; position: absolute; inset: 25px; border: 1px solid #837cb140; border-radius: 50%; }
 .mk-visual-commerce .mk-project-symbol { background: #eee4dc; color: #8a5b48; }
 .mk-visual-study .mk-project-symbol { background: #e4e3f1; color: #7a74a0; }
-.mk-visual-flight .mk-project-symbol { background: #d4e6ee; color: #477885; }
 
 /* Client stories */
 .mk-testimonials { position: relative; overflow: hidden; padding: 80px 0; color: #fff; background: linear-gradient(115deg, #08061a 0%, #120b4d 60%, #2a1a9e 100%); }

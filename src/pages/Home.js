@@ -80,7 +80,7 @@ function ProjectVisual({ project }) {
       height="800"
       loading="lazy"
       decoding="async"
-    /> : <div className="mk-project-symbol"><Icon name={{ commerce: 'globe', study: 'ai', access: 'design', flight: 'diagonal' }[project.type]} size={74} /><span>{project.name}</span><div className="mk-symbol-orbit" /></div>}
+    /> : <div className="mk-project-symbol"><Icon name={{ commerce: 'globe', study: 'ai', access: 'design' }[project.type]} size={74} /><span>{project.name}</span><div className="mk-symbol-orbit" /></div>}
     <span className="mk-visual-visit">Visit live site <Icon name="diagonal" size={13} /></span>
   </div>;
 }
@@ -166,7 +166,7 @@ export default function Home() {
     <section className="mk-work mk-section" id="work">
       <div className="mk-wrap">
         <RevealOnScroll><div className="mk-section-heading"><div><span className="mk-eyebrow">SELECTED WORK</span><h2>Real challenges.<br /><em>Thoughtful solutions.</em></h2></div><p className="mk-heading-description">A closer look at the products we’ve helped shape, build, and bring to the world.</p></div></RevealOnScroll>
-        <div className="mk-work-filters"><div className="mk-work-tabs" role="group" aria-label="Filter projects">{[{ id: 'featured', label: 'Featured projects' }, { id: 'web', label: 'Websites & platforms' }, { id: 'ai', label: 'AI-powered apps' }, { id: 'all', label: 'All projects' }].map(item => <button key={item.id} onClick={() => setFilter(item.id)} className={filter === item.id ? 'is-active' : ''} aria-pressed={filter === item.id}>{item.label}</button>)}</div><span>{String(visibleProjects.length).padStart(2, '0')} PROJECTS</span></div>
+        <div className="mk-work-filters"><div className="mk-work-tabs" role="group" aria-label="Filter projects">{[{ id: 'featured', label: 'Featured projects' }, { id: 'web', label: 'Websites & platforms' }, { id: 'ai', label: 'AI-powered apps' }, { id: 'mobile', label: 'Mobile apps' }, { id: 'all', label: 'All projects' }].map(item => <button key={item.id} onClick={() => setFilter(item.id)} className={filter === item.id ? 'is-active' : ''} aria-pressed={filter === item.id}>{item.label}</button>)}</div><span>{String(visibleProjects.length).padStart(2, '0')} PROJECTS</span></div>
         <div className="mk-project-grid" aria-live="polite">{visibleProjects.map(project => <a key={project.name} href={project.url} target="_blank" rel="noopener noreferrer" className="mk-project-card" aria-label={`Visit ${project.name} (opens in a new tab)`}><ProjectVisual project={project} /><div className="mk-project-body"><span className="mk-eyebrow">{project.category}</span><h3>{project.title}</h3><p>{project.description}</p><div className="mk-project-bottom"><span>{project.tags[0]}</span><span className="mk-round-arrow"><Icon name="diagonal" size={17} /></span></div></div></a>)}</div>
         {filter === 'featured' && <div className="mk-work-more"><span>Every project starts with a conversation.</span><button className="mk-text-link" onClick={() => setFilter('all')}>Discover more of our work <Icon size={17} /></button></div>}
       </div>
