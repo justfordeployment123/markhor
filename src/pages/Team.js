@@ -19,6 +19,15 @@ const ENGINEER = {
   photo: '/Faizan.jpg',
 };
 
+// Photos live in public/team/; anyone without one shows their initials.
+const TEAM = [
+  { name: 'Ali Hassan', initials: 'AH', role: 'Business Development Lead', linkedin: 'https://www.linkedin.com/in/ali-hassan-250547324/' },
+  { name: 'Abdul Ahad', initials: 'AA', linkedin: 'https://www.linkedin.com/in/abdulahad-zarinc/' },
+  { name: 'Abdul Rafay', initials: 'AR', linkedin: 'https://www.linkedin.com/in/abdul-rafay-25a102230/' },
+  { name: 'Muhammad Faizan Shakeel', initials: 'FS', linkedin: 'https://www.linkedin.com/in/muhammad-faizan-shakeel-7aab3a314/' },
+  { name: 'Muhammad Bilal Tahir', initials: 'BT', linkedin: 'https://www.linkedin.com/in/m-bilaltahir/' },
+];
+
 const FACTS = [
   { value: 3, suffix: ' yrs', label: 'Shipping real products', count: true },
   { value: 7, suffix: '+', label: 'Products brought to life', count: true },
@@ -90,6 +99,17 @@ export default function Team() {
               </div>
             </div>
           </article>
+        </RevealOnScroll>
+        <RevealOnScroll>
+          <div className="mk-team-head"><h3>The team <em>around every build.</em></h3><p>The people working alongside {ENGINEER.firstName} to keep your project moving.</p></div>
+          <ul className="mk-team">{TEAM.map(member => <li key={member.name} className="mk-team-card">
+            <div className="mk-team-photo">{member.photo ? <img src={member.photo} alt={member.name} width="600" height="750" loading="lazy" decoding="async" /> : <span className="mk-team-initials" aria-hidden="true">{member.initials}</span>}</div>
+            <div className="mk-team-body">
+              <strong>{member.name}</strong>
+              {member.role && <small>{member.role}</small>}
+              <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="mk-team-link" aria-label={`${member.name} on LinkedIn`}><Icon name="linkedin" size={16} />LinkedIn</a>
+            </div>
+          </li>)}</ul>
         </RevealOnScroll>
       </div>
     </section>

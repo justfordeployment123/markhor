@@ -24,6 +24,7 @@ const paths = {
   handover: <><path d="M15 7l-3-3-3 3m3-3v12" /><path d="M4 14v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4" /></>,
   chat: <><path d="M4 5h16v11H9l-5 4V5Z" /><path d="M8 9h8m-8 3h5" /></>,
   user: <><circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" /></>,
+  linkedin: <><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M8 11v6M8 7.5v.01M12 17v-6m0 3a2.5 2.5 0 0 1 5 0v3" /></>,
   bolt: <path d="M13 2 3 14h8l-1 8 10-12h-8l1-8Z" />,
   layers: <><path d="m12 3 9 5-9 5-9-5 9-5Z" /><path d="m3 13 9 5 9-5" /></>,
 };

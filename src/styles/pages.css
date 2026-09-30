@@ -367,6 +367,24 @@
 .mk-profile-link svg { color: var(--mk-purple); }
 .mk-profile-link:hover { color: var(--mk-purple); }
 
+/* Team: the wider team */
+.mk-team-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin: 72px 0 28px; }
+.mk-team-head h3 { margin: 0; font-size: clamp(22px, 2.2vw, 28px); font-weight: 500; letter-spacing: -.02em; line-height: 1.2; }
+.mk-team-head h3 em { color: var(--mk-purple); font-style: normal; }
+.mk-home .mk-team-head p { max-width: 400px; margin: 0; font-size: 14.5px; }
+.mk-team { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.mk-team-card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e4e3ec; border-radius: 18px; background: #fff; transition: border-color .3s, box-shadow .3s, transform .45s var(--glide); }
+.mk-team-card:hover { border-color: #cfc8f3; box-shadow: 0 30px 60px -44px #1d136b66; transform: translateY(-4px); }
+.mk-team-photo { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 5; background: linear-gradient(150deg, #0b1f45, #1d136b 60%, #432dd7); }
+.mk-team-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
+.mk-team-initials { color: #d9d0fb; font-size: 40px; font-weight: 500; letter-spacing: -.02em; }
+.mk-team-body { display: flex; flex: 1; flex-direction: column; align-items: flex-start; gap: 4px; padding: 18px 18px 20px; }
+.mk-team-body strong { font-size: 15.5px; font-weight: 600; letter-spacing: -.01em; line-height: 1.3; }
+.mk-team-body small { color: var(--mk-muted); font-size: 12.5px; }
+.mk-team-link { display: inline-flex; align-items: center; gap: 7px; margin-top: auto; padding-top: 10px; color: #3b3755; font-size: 12.5px; font-weight: 600; transition: color .2s; }
+.mk-team-link svg { color: var(--mk-purple); }
+.mk-team-link:hover { color: var(--mk-purple); }
+
 /* Team: open roles */
 .mk-roles { margin: 0 0 22px; padding: 0; border-top: 1px solid #e4e3ec; list-style: none; }
 .mk-role { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto auto; align-items: center; gap: 24px; padding: 26px 12px; border-bottom: 1px solid #e4e3ec; color: var(--mk-ink); transition: background .3s, padding .45s var(--glide); }
@@ -439,6 +457,7 @@ select.mk-input { -webkit-appearance: none; appearance: none; padding-right: 42p
   .mk-story-grid, .mk-journey-grid, .mk-timezone-grid, .mk-mark-grid { gap: 56px; }
   .mk-offer-grid { gap: 48px; }
   .mk-profile-body { padding: 36px 36px; }
+  .mk-team { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .mk-contact-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 48px; }
   .mk-framed-chip-1 { left: -10px; }
   .mk-framed-chip-2 { right: -6px; }
@@ -476,6 +495,7 @@ select.mk-input { -webkit-appearance: none; appearance: none; padding-right: 42p
   .mk-role { grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding-inline: 4px; }
   .mk-role:hover { padding-inline: 12px; }
   .mk-role .mk-card-number, .mk-role-status { display: none; }
+  .mk-team-head { flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 56px; }
   .mk-contact-grid { padding-top: 124px; }
 }
 @media (max-width: 540px) {
@@ -547,6 +567,10 @@ select.mk-input { -webkit-appearance: none; appearance: none; padding-right: 42p
   .mk-profile-stats dt { font-size: 9px; letter-spacing: .08em; }
   .mk-profile-stats > div + div { padding-left: 12px; }
   .mk-profile-actions .mk-button { width: 100%; justify-content: space-between; }
+  .mk-team { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .mk-team-body { padding: 14px 14px 16px; }
+  .mk-team-body strong { font-size: 14px; }
+  .mk-team-initials { font-size: 32px; }
   .mk-role-main strong { font-size: 16px; }
   .mk-role-apply { font-size: 0; }
   .mk-form { padding: 24px 20px 20px; border-radius: 18px; }
@@ -557,4 +581,5 @@ select.mk-input { -webkit-appearance: none; appearance: none; padding-right: 42p
 @media (prefers-reduced-motion: reduce) {
   .mk-page-hero-bg::after, .mk-glass-chip, .mk-phone, .mk-quote-stack, .mk-blueprint-circle, .mk-blueprint-mark, .mk-direct-rail i, .mk-clock-live span, .mk-form-live span { animation: none; }
   .mk-ui-line { stroke-dashoffset: 0; animation: none; }
+  .mk-team-card:hover { transform: none; }
 }
