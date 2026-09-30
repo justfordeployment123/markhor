@@ -6,13 +6,13 @@ import {
   useLocation,
   useNavigationType,
 } from 'react-router-dom';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, MotionConfig } from 'motion/react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import FloatingContact from './components/FloatingContact';
-import LoadingScreen from './components/LoadingScreen';
-import AnnouncementBar from './components/AnnouncementBar';
 import './App.css';
+import './styles/enterprise.css';
+import './styles/pages.css';
 
 // Cached import promises so we can warm the cache (preload) before a user clicks
 const homeImport = () => import('./pages/Home');
@@ -58,6 +58,7 @@ const PageWrapper = ({ children }) => (
     transition={pageTransition}
     className="page-motion"
   >
+    <ScrollToTop />
     {children}
   </motion.div>
 );
@@ -72,11 +73,18 @@ const ScrollToTop = () => {
   const navType = useNavigationType();
 
   useEffect(() => {
+    if (location.hash) {
+      const id = decodeURIComponent(location.hash.slice(1));
+      const frame = requestAnimationFrame(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'instant', block: 'start' });
+      });
+      return () => cancelAnimationFrame(frame);
+    }
     // Don't re-scroll on back/forward — browser restores the position naturally
     if (navType !== 'POP') {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }
-  }, [location.pathname, navType]);
+  }, [location.pathname, location.hash, navType]);
 
   return null;
 };
@@ -114,7 +122,6 @@ const AnimatedRoutes = () => {
   return (
     <>
       <RouteProgress active={isTransitioning} />
-      <ScrollToTop />
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
           <Route
@@ -152,7 +159,6 @@ const AnimatedRoutes = () => {
 };
 
 function App() {
-  const [loading, setLoading] = useState(true);
 
   // Preload every route once the browser is idle — after this,
   // every navigation is an instant memory-cached fade (no Suspense flash).
@@ -176,12 +182,12 @@ function App() {
   }, []);
 
   return (
+    <MotionConfig reducedMotion="user">
     <Router>
-      {loading && <LoadingScreen onDone={() => setLoading(false)} />}
-      <div className="App" aria-hidden={loading}>
-        <AnnouncementBar />
+      <div className="App">
+        <a href="#main-content" className="mk-skip-link">Skip to content</a>
         <Header />
-        <main>
+        <main id="main-content" tabIndex={-1}>
           <Suspense fallback={<div className="page-loading" />}>
             <AnimatedRoutes />
           </Suspense>
@@ -190,6 +196,7 @@ function App() {
         <FloatingContact />
       </div>
     </Router>
+    </MotionConfig>
   );
 }
 

@@ -1,317 +1,179 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import RevealOnScroll from '../components/RevealOnScroll';
-import CTASection from '../components/CTASection';
-import MarqueeStrip from '../components/MarqueeStrip';
-import './Home.css';
+import Icon from '../components/Icon';
+import PageHero from '../components/PageHero';
+import SectionHeading from '../components/SectionHeading';
+import ClientStrip from '../components/ClientStrip';
+import { spotlight } from '../components/effects';
+import { projects } from '../data/projects';
 
-const REVIEWS = [
+const STORIES = [
   {
-    id: 1,
-    quote: 'The brief was complex — an AI that reads UK official letters (pension notices, court summons, NHS letters) and explains them in plain English, gated behind Stripe. Markhor delivered exactly that. The pipeline handles edge cases we didn\'t anticipate, and the Stripe integration went live without a single support ticket on launch day.',
+    project: 'ExplainMyLetter',
+    mark: 'EML',
+    quote: 'The brief was complex — an AI that reads UK official letters (pension notices, court summons, NHS letters) and explains them in plain English, gated behind Stripe. Markhor delivered exactly that. The pipeline handles edge cases we didn’t anticipate, and the Stripe integration went live without a single support ticket on launch day.',
+    excerpt: 'The pipeline handles edge cases we didn’t anticipate.',
     author: 'James Hargreaves',
     role: 'Founder · ExplainMyLetter',
-    company: 'EML',
-    project: 'AI · Web App',
-    industry: 'ai',
-    rating: 5,
-    year: '2024',
-    featured: true,
-    metric: { v: '< 3s', k: 'avg letter analysis time' },
+    category: 'AI · WEB APPLICATION',
+    sector: 'ai',
+    metric: { value: '< 3s', label: 'Average letter analysis' },
   },
   {
-    id: 2,
-    quote: 'We needed a property platform that could handle UAE\'s RE/MAX agent network — listings, lead capture, CMS, agent profiles, the lot. Markhor built it end-to-end and handed over a codebase our in-house team can actually maintain. The admin CMS alone saved us thousands in ongoing vendor costs.',
+    project: 'Remax Hub',
+    mark: 'RMX',
+    quote: 'We needed a property platform that could handle the UAE’s RE/MAX agent network — listings, lead capture, CMS, agent profiles, the lot. Markhor built it end-to-end and handed over a codebase our in-house team can actually maintain. The admin CMS alone saved us thousands in ongoing vendor costs.',
     author: 'Khalid Al-Rashid',
     role: 'Head of Digital · Remax Hub UAE',
-    company: 'RMX',
-    project: 'Real Estate · Web',
-    industry: 'web',
-    rating: 5,
-    year: '2024',
-    metric: { v: '100+', k: 'agents onboarded at launch' },
+    category: 'REAL ESTATE · WEB PLATFORM',
+    sector: 'web',
+    metric: { value: '100+', label: 'Agents onboarded at launch' },
   },
   {
-    id: 3,
-    quote: 'We had the idea — AI staging for property photos — but no idea how to build a job queue that handles bulk image processing, marketing video generation, and floor plan parsing at the same time. Markhor figured it out. The SaaS launched on time and the pipeline hasn\'t gone down since.',
+    project: 'Enhancia.ai',
+    mark: 'ENH',
+    quote: 'We had the idea — AI staging for property photos — but no idea how to build a job queue that handles bulk image processing, marketing video generation, and floor plan parsing at the same time. Markhor figured it out. The SaaS launched on time and the pipeline hasn’t gone down since.',
+    excerpt: 'The SaaS launched on time and the pipeline hasn’t gone down since.',
     author: 'Sofia Brennan',
     role: 'Co-Founder · Enhancia.ai',
-    company: 'ENH',
-    project: 'AI · SaaS',
-    industry: 'ai',
-    rating: 5,
-    year: '2024',
-    metric: { v: '98%', k: 'job queue uptime' },
+    category: 'SAAS · GENERATIVE AI',
+    sector: 'ai',
+    metric: { value: '98%', label: 'Job queue uptime' },
   },
   {
-    id: 4,
-    quote: 'Multi-vendor with role-based auth, real-time chat, order tracking, and Stripe payments. We\'d been quoted 12 months by two agencies. Markhor shipped a working platform in under five months. The code is clean, the dashboards are intuitive, and sellers onboarded without a single support call.',
+    project: 'Stilo E-Commerce',
+    mark: 'STL',
+    quote: 'Multi-vendor with role-based auth, real-time chat, order tracking, and Stripe payments. We’d been quoted 12 months by two agencies. Markhor shipped a working platform in under five months. The code is clean, the dashboards are intuitive, and sellers onboarded without a single support call.',
     author: 'Nadia Farooq',
     role: 'Founder · Stilo E-Commerce',
-    company: 'STL',
-    project: 'Retail · Web',
-    industry: 'retail',
-    rating: 5,
-    year: '2023',
-    metric: { v: '5 months', k: 'brief to go-live' },
+    category: 'RETAIL · MARKETPLACE',
+    sector: 'commerce',
+    metric: { value: '5 months', label: 'Brief to go-live' },
   },
   {
-    id: 5,
-    quote: 'Turning lecture PDFs into flashcards, MCQs, and mind maps with Arabic support — I couldn\'t find anyone willing to tackle Arabic NLP alongside everything else. Markhor treated it like any other requirement, shipped a working model, and the Arabic support actually works.',
+    project: 'Memora Study',
+    mark: 'MEM',
+    quote: 'Turning lecture PDFs into flashcards, MCQs, and mind maps with Arabic support — I couldn’t find anyone willing to tackle Arabic NLP alongside everything else. Markhor treated it like any other requirement, shipped a working model, and the Arabic support actually works.',
+    excerpt: 'Markhor treated it like any other requirement — and the Arabic support actually works.',
     author: 'Tariq Al-Mansouri',
     role: 'Founder · Memora Study',
-    company: 'MEM',
-    project: 'EdTech · AI',
-    industry: 'ai',
-    rating: 5,
-    year: '2024',
-    metric: { v: '4 languages', k: 'supported at launch' },
+    category: 'EDTECH · AI',
+    sector: 'ai',
+    metric: { value: '4 languages', label: 'Supported at launch' },
   },
-  {
-    id: 6,
-    quote: 'We needed a corporate platform that communicated the legitimacy of our UAV operation — civil logistics, emergency rescue, pilot training, regulatory info. Markhor understood the space immediately, designed something that looked the part, and delivered in six weeks flat.',
-    author: 'Liang Wei',
-    role: 'Product Lead · Aeroplane UAV',
-    company: 'APL',
-    project: 'Logistics · Web',
-    industry: 'logistics',
-    rating: 5,
-    year: '2023',
-    metric: { v: '6 weeks', k: 'concept to launch' },
-  },
-];
+].map(story => ({ ...story, site: projects.find(project => project.name === story.project) }));
 
+const FEATURED = STORIES[0];
 const FILTERS = [
-  { id: 'all', label: 'All reviews' },
-  { id: 'ai', label: 'AI / ML' },
-  { id: 'web', label: 'Web' },
-  { id: 'retail', label: 'Retail' },
-  { id: 'logistics', label: 'Logistics' },
+  { id: 'all', label: 'All stories' },
+  { id: 'ai', label: 'AI-powered' },
+  { id: 'web', label: 'Web platforms' },
+  { id: 'commerce', label: 'E-commerce' },
+];
+const FACTS = [
+  { value: '5/5', label: 'Rating on every story' },
+  { value: STORIES.length, label: 'Founders & teams featured', count: true },
+  { value: 'UK · UAE', label: 'Where they’re building' },
+  { value: 7, suffix: '+', label: 'Products brought to life', count: true },
+];
+const INTRO_STEPS = [
+  { title: 'Scope your project', text: 'A 30-minute call to understand what you’re building and why.' },
+  { title: 'We make the introduction', text: 'One or two past clients at a similar stage or in a similar space.' },
+  { title: 'Ask them anything', text: 'Including the hard questions. We won’t be on the call.' },
 ];
 
-const Reviews = () => {
+const initials = name => name.split(' ').map(part => part[0]).join('');
+
+function Stars({ label = true }) {
+  return <span className="mk-stars" role={label ? 'img' : undefined} aria-label={label ? 'Rated 5 out of 5' : undefined} aria-hidden={label ? undefined : true}>★★★★★</span>;
+}
+
+function QuoteStack() {
+  return <div className="mk-quote-stack" aria-hidden="true">
+    {STORIES.filter(story => story.excerpt).map((story, index) => <figure key={story.author} className={`mk-stack-card mk-stack-card-${index + 1}`}>
+      <Stars label={false} />
+      <p>“{story.excerpt}”</p>
+      <figcaption><span className="mk-avatar">{initials(story.author)}</span><span><strong>{story.author}</strong><small>{story.project}</small></span></figcaption>
+    </figure>)}
+  </div>;
+}
+
+export default function Reviews() {
   const [filter, setFilter] = useState('all');
-  const featured = REVIEWS.find((r) => r.featured) || REVIEWS[0];
-  const rest = REVIEWS.filter((r) => !r.featured);
-  const visible = filter === 'all' ? rest : rest.filter((r) => r.industry === filter);
+  const rest = STORIES.filter(story => story !== FEATURED);
+  const visible = filter === 'all' ? rest : rest.filter(story => story.sector === filter);
 
-  return (
-    <div className="home">
+  return <div className="mk-home mk-page">
+    <PageHero
+      eyebrow="CLIENT STORIES"
+      title="What founders say"
+      accent="when we’re not in the room."
+      lead="We asked clients what they’d tell a first-time founder about working with Markhor. These are their words — with the specific moments and metrics that earned them."
+      actions={<>
+        <Link to="/contact" className="mk-button mk-button-light">Start your project <Icon name="diagonal" size={18} /></Link>
+        <Link to="/#work" className="mk-button mk-button-glass">See the work <Icon name="arrow" size={17} /></Link>
+      </>}
+      visual={<QuoteStack />}
+      facts={FACTS}
+    />
 
-      {/* HERO */}
-      <section className="hero hero-sm">
-        <div className="hero-bg-grid" aria-hidden="true" />
-        <div className="hero-bg-glow" aria-hidden="true" />
-        <div className="hero-bg-glow-2" aria-hidden="true" />
-
-        <div className="container hero-container">
-          <div className="hero-copy">
-            <RevealOnScroll animation="fadeUp" delay={0} immediate>
-              <div className="eyebrow">
-                <span className="eyebrow-dot" />
-                <span>Client Reviews</span>
-              </div>
-            </RevealOnScroll>
-            <RevealOnScroll animation="fadeUp" delay={100} immediate>
-              <h1 className="hero-title">
-                What founders say
-                <span className="hero-title-accent"> when we're not in the room.</span>
-              </h1>
-            </RevealOnScroll>
-            <RevealOnScroll animation="fadeUp" delay={180} immediate>
-              <p className="hero-lead">
-                We asked clients what they'd tell a first-time founder about
-                working with Markhor. These are their words — with the specific
-                metrics and moments that earned them.
-              </p>
-            </RevealOnScroll>
-          </div>
-
-          <RevealOnScroll animation="fadeUp" delay={300} immediate>
-            <div className="hero-trust">
-              {[
-                { val: '4.9★',  label: 'Avg review' },
-                { val: '50+',   label: 'Reviews collected' },
-                { val: '92%',   label: 'Return for second project' },
-                { val: '100%',  label: 'Would refer' },
-              ].map((s, i) => (
-                <div key={i} className="trust-stat">
-                  <span className="trust-stat-val">{s.val}</span>
-                  <span className="trust-stat-label">{s.label}</span>
-                </div>
-              ))}
-            </div>
-          </RevealOnScroll>
-        </div>
-      </section>
-
-      {/* MARQUEE */}
-      <MarqueeStrip />
-
-      {/* FEATURED REVIEW */}
-      <section className="testi">
-        <div className="container">
-          <RevealOnScroll animation="fadeUp">
-            <div className="section-header section-header-center">
-              <span className="eyebrow">
-                <span className="eyebrow-dot" />
-                <span>Featured Review</span>
-              </span>
-              <h2 className="section-title">
-                Words from a
-                <span className="section-title-accent"> long-term partner.</span>
-              </h2>
-            </div>
-          </RevealOnScroll>
-
-          <RevealOnScroll animation="fadeUp" delay={80}>
-            <figure className="testi-card testi-card-featured testi-card-featured-solo">
-              <span className="testi-featured-badge">
-                <span className="testi-featured-dot" />
-                Featured Story · AI · Web
-              </span>
-              <div className="testi-head">
-                <div className="testi-company" aria-hidden="true">{featured.company}</div>
-                <div className="testi-rating" aria-label={`${featured.rating} out of 5 stars`}>
-                  {[...Array(featured.rating)].map((_, s) => (
-                    <svg key={s} viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
-                      <path d="M12 2l2.9 6.3 6.9.7-5.2 4.7 1.5 6.8L12 17l-6.1 3.5 1.5-6.8L2.2 9l6.9-.7L12 2z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <blockquote className="testi-quote">{featured.quote}</blockquote>
-              <figcaption className="testi-foot">
-                <div className="testi-avatar">{featured.author.charAt(0)}</div>
-                <div className="testi-foot-text">
-                  <p className="testi-name">{featured.author}</p>
-                  <p className="testi-role">{featured.role}</p>
-                </div>
-                <div className="testi-metric">
-                  <span className="testi-metric-val">{featured.metric.v}</span>
-                  <span className="testi-metric-key">{featured.metric.k}</span>
-                </div>
+    <section className="mk-section mk-featured-story">
+      <div className="mk-wrap">
+        <RevealOnScroll><SectionHeading eyebrow="FEATURED STORY" title="A complex brief." accent="Delivered exactly."><p className="mk-heading-description">An AI that explains UK official letters in plain English — and a launch day without a single support ticket.</p></SectionHeading></RevealOnScroll>
+        <RevealOnScroll>
+          <figure className="mk-feature-story">
+            <a className="mk-feature-media" href={FEATURED.site.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${FEATURED.project} (opens in a new tab)`}>
+              <img src={FEATURED.site.image} srcSet={`${FEATURED.site.imageSmall} 640w, ${FEATURED.site.image} 1280w`} sizes="(max-width: 900px) 100vw, 600px" width="1280" height="800" alt="" loading="lazy" decoding="async" />
+              <span className="mk-visual-label">{FEATURED.project}</span>
+              <span className="mk-visual-visit">Visit live site <Icon name="diagonal" size={13} /></span>
+            </a>
+            <div className="mk-feature-quote">
+              <div className="mk-quote-top"><span className="mk-quote-mark" aria-hidden="true">“</span><Stars /></div>
+              <span className="mk-eyebrow">{FEATURED.category}</span>
+              <blockquote>{FEATURED.quote}</blockquote>
+              <figcaption className="mk-feature-foot">
+                <span className="mk-quote-person"><span className="mk-avatar">{initials(FEATURED.author)}</span><span><strong>{FEATURED.author}</strong><small>{FEATURED.role}</small></span></span>
+                <span className="mk-feature-metric"><strong>{FEATURED.metric.value}</strong><small>{FEATURED.metric.label}</small></span>
               </figcaption>
-            </figure>
-          </RevealOnScroll>
-        </div>
-      </section>
-
-      {/* BRIDGE STAT */}
-      <section className="bridge">
-        <div className="container">
-          <RevealOnScroll animation="fadeUp">
-            <div className="bridge-inner">
-              <span className="bridge-divider" aria-hidden="true" />
-              <div className="bridge-content">
-                <span className="bridge-stat">92%</span>
-                <p className="bridge-text">
-                  of our clients return for a second project —
-                  <span className="bridge-text-accent"> the best signal of trust we have.</span>
-                </p>
-              </div>
-              <span className="bridge-divider" aria-hidden="true" />
             </div>
-          </RevealOnScroll>
+          </figure>
+        </RevealOnScroll>
+      </div>
+    </section>
+
+    <section className="mk-band mk-panel mk-stories" id="stories">
+      <div className="mk-wrap">
+        <RevealOnScroll><SectionHeading eyebrow="MORE CLIENT STORIES" title="Different industries." accent="The same ending."><p className="mk-heading-description">Shipped on time, handed over properly, and still live today.</p></SectionHeading></RevealOnScroll>
+        <div className="mk-work-filters">
+          <div className="mk-work-tabs" role="group" aria-label="Filter client stories">{FILTERS.map(item => <button key={item.id} onClick={() => setFilter(item.id)} className={filter === item.id ? 'is-active' : ''} aria-pressed={filter === item.id}>{item.label}</button>)}</div>
+          <span>{String(visible.length).padStart(2, '0')} {visible.length === 1 ? 'STORY' : 'STORIES'}</span>
         </div>
-      </section>
+        <div className="mk-story-grid-cards" aria-live="polite">{visible.map(story => <figure key={story.author} className="mk-review-card mk-spot" onPointerMove={spotlight}>
+          <div className="mk-review-top"><span className="mk-review-mark">{story.mark}</span><span className="mk-review-category">{story.category}</span><Stars /></div>
+          <blockquote>{story.quote}</blockquote>
+          <div className="mk-review-metric"><strong>{story.metric.value}</strong><span>{story.metric.label}</span></div>
+          <figcaption className="mk-review-foot">
+            <span className="mk-avatar">{initials(story.author)}</span>
+            <span><strong>{story.author}</strong><small>{story.role}</small></span>
+            {story.site && <a href={story.site.url} target="_blank" rel="noopener noreferrer" className="mk-round-arrow" aria-label={`Visit ${story.project} (opens in a new tab)`}><Icon name="diagonal" size={16} /></a>}
+          </figcaption>
+        </figure>)}</div>
+      </div>
+    </section>
 
-      {/* ALL REVIEWS */}
-      <section className="process process-home">
-        <div className="howwe-bg-grid" aria-hidden="true" />
-        <div className="howwe-bg-glow" aria-hidden="true" />
+    <section className="mk-impact mk-intro-offer">
+      <div className="mk-impact-grid" aria-hidden="true" />
+      <div className="mk-wrap mk-offer-grid">
+        <RevealOnScroll className="mk-offer-copy">
+          <div className="mk-impact-heading"><div><span className="mk-eyebrow">WANT A SECOND OPINION?</span><h2>Talk to a past client.<br /><em>Before you sign anything.</em></h2></div></div>
+          <p>Once we’ve scoped your project, we’ll introduce you to one or two past clients at a similar stage or in a similar industry. Ask them anything.</p>
+          <Link to="/contact" className="mk-button mk-button-light">Book a scoping call <Icon name="diagonal" size={18} /></Link>
+        </RevealOnScroll>
+        <div className="mk-offer-steps">{INTRO_STEPS.map((step, index) => <RevealOnScroll key={step.title} delay={index * 90}><div className="mk-offer-step"><span className="mk-offer-num">0{index + 1}</span><div><strong>{step.title}</strong><span>{step.text}</span></div></div></RevealOnScroll>)}</div>
+      </div>
+    </section>
 
-        <div className="container">
-          <RevealOnScroll animation="fadeUp">
-            <div className="section-header section-header-center">
-              <span className="eyebrow">
-                <span className="eyebrow-dot" />
-                <span>All Reviews</span>
-              </span>
-              <h2 className="section-title">
-                Real projects,
-                <span className="section-title-accent"> real results.</span>
-              </h2>
-              <p className="howwe-lead">
-                From an AI letter reader in the UK to a UAE real estate platform —
-                different industries, same ending: shipped on time, still live.
-              </p>
-            </div>
-          </RevealOnScroll>
-
-          <RevealOnScroll animation="fadeUp" delay={80}>
-            <div className="reviews-filters">
-              {FILTERS.map((f) => (
-                <button
-                  key={f.id}
-                  type="button"
-                  onClick={() => setFilter(f.id)}
-                  className={`reviews-filter ${filter === f.id ? 'reviews-filter-active' : ''}`}
-                >
-                  {f.label}
-                </button>
-              ))}
-            </div>
-          </RevealOnScroll>
-
-          <div className="testi-grid">
-            {visible.map((r, i) => (
-              <RevealOnScroll key={r.id} animation="fadeUp" delay={i * 80}>
-                <figure className="testi-card">
-                  <div className="testi-head">
-                    <div className="testi-company" aria-hidden="true">{r.company}</div>
-                    <div className="testi-rating" aria-label={`${r.rating} out of 5 stars`}>
-                      {[...Array(r.rating)].map((_, s) => (
-                        <svg key={s} viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
-                          <path d="M12 2l2.9 6.3 6.9.7-5.2 4.7 1.5 6.8L12 17l-6.1 3.5 1.5-6.8L2.2 9l6.9-.7L12 2z" />
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
-                  <blockquote className="testi-quote">{r.quote}</blockquote>
-                  <figcaption className="testi-foot">
-                    <div className="testi-avatar">{r.author.charAt(0)}</div>
-                    <div className="testi-foot-text">
-                      <p className="testi-name">{r.author}</p>
-                      <p className="testi-role">{r.role}</p>
-                    </div>
-                    <span className="testi-project-chip">{r.project}</span>
-                  </figcaption>
-                  {r.metric && (
-                    <div className="testi-metric-row">
-                      <span className="testi-metric-val">{r.metric.v}</span>
-                      <span className="testi-metric-key">{r.metric.k}</span>
-                    </div>
-                  )}
-                </figure>
-              </RevealOnScroll>
-            ))}
-          </div>
-
-          {visible.length === 0 && (
-            <p className="reviews-empty">
-              No reviews tagged <strong>{FILTERS.find(f => f.id === filter)?.label}</strong> yet —
-              but we're happy to introduce you to a past client in that space on request.
-            </p>
-          )}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <CTASection
-        status="Accepting 2 new projects · Q3 2026"
-        title="Want to talk to"
-        titleAccent="a past client?"
-        lead="Once we've scoped your project, we'll introduce you to 1–2 past clients in a similar stage or industry. Ask them anything — including the hard questions."
-        bullets={[
-          'Direct intro to past clients in your vertical',
-          'Ask them anything — we won\'t be on the call',
-          '30-min scoping call · NDA on request',
-        ]}
-        ctaLabel="Book a scoping call"
-      />
-
-    </div>
-  );
-};
-
-export default Reviews;
+    <ClientStrip label="THE PRODUCTS BEHIND THESE STORIES" />
+  </div>;
+}

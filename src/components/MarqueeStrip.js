@@ -1,9 +1,9 @@
 import React from 'react';
 
 const DEFAULT_ITEMS = [
-  'React', 'Next.js', 'Swift', 'Kotlin', 'Python', 'PyTorch',
-  'Go', 'Rust', 'Node.js', 'PostgreSQL', 'Redis', 'GraphQL',
-  'Figma', 'AWS', 'GCP', 'Docker', 'Kubernetes', 'OpenAI',
+  'React', 'Next.js', 'React Native', 'Flutter', 'Swift', 'Kotlin',
+  'Node.js', 'TypeScript', 'Python', 'PostgreSQL', 'Firebase', 'GraphQL',
+  'Figma', 'Stripe', 'AWS', 'Docker', 'App Store', 'Google Play',
 ];
 
 const MarqueeStrip = ({ items = DEFAULT_ITEMS }) => {

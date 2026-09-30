@@ -20,14 +20,12 @@ const PRELOAD_MAP = {
  * Drop-in replacement for react-router-dom's Link with two upgrades:
  *
  *   1. On hover/focus, preloads the route's JS chunk (perceived-instant navigation).
- *   2. Passes `viewTransition` to react-router-dom v7 so browsers that
- *      support the View Transitions API get the native compositor-thread
- *      cross-fade in addition to Motion's AnimatePresence fallback.
+ *   Page transitions are handled by Motion in App.js.
  */
 const PrefetchLink = ({ to, children, onMouseEnter, onFocus, ...rest }) => {
   const preload = useCallback(() => {
     if (typeof to !== 'string') return;
-    const fn = PRELOAD_MAP[to];
+    const fn = PRELOAD_MAP[to.split(/[?#]/)[0]];
     if (fn) fn();
   }, [to]);
 
@@ -46,7 +44,6 @@ const PrefetchLink = ({ to, children, onMouseEnter, onFocus, ...rest }) => {
       to={to}
       onMouseEnter={handleMouseEnter}
       onFocus={handleFocus}
-      viewTransition
       {...rest}
     >
       {children}
